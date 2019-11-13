@@ -1,0 +1,124 @@
+#container {
+  width: 100%;
+  height: 100%;
+  background-image: url('../images/LoginBackground.jpg');
+}
+
+.loginBox {
+  position: fixed;
+  top: calc(50% - 200px);
+  left: calc(50% - 175px);
+  width: 350px;
+  height: 340px;
+  background-color: rgba(255,255,255,0.9);
+  border: 3px solid #888;
+  border-radius: 10px;
+  padding: 16px;
+  text-align: center;
+}
+
+.tittle {
+  font-size: 35px;
+  font-weight: bolder;
+  margin: 0 auto;
+  text-align: center;
+  color: #2c3e50;
+}
+
+.innerUser {
+  width: 100%;
+}
+
+.innerUser input {
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 4px;
+  border: 1px solid #DCDFE6;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  color: #606266;
+  display: inline-block;
+  font-size: 14px;
+}
+
+.innerUser input:focus {
+  border: 1px solid #03abf4fa;
+}
+
+.form-success {
+  border: 1px solid #67C23A!important;
+}
+
+.form-error {
+  border: 1px solid #F56C6C!important;
+}
+
+.form-error+.form-item__error {
+  display: block!important;
+}
+
+#loginBtn,#registerBtn {
+  width: 80%;
+  margin: 20px;
+}
+
+#registerBtn {
+  margin-top: 0;
+}
+
+.form-item__error {
+  color: #F56C6C;
+  font-size: 12px!important;
+  height: 1px;
+  line-height: 18px;
+  position: relative;
+  text-align: left;
+  display: none;
+}
+
+.wrrap {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: auto;
+  margin: 0;
+  z-index: 2003;
+  display: none;
+}
+
+.registerBox {
+  position: relative;
+  margin: 0 auto 50px;
+  border-radius: 2px;
+  /* -webkit-box-shadow: 0 1px 3px rgba(0,0,0,.3); */
+  box-shadow: 0 1px 3px rgba(0,0,0,.3);
+  /* -webkit-box-sizing: border-box; */
+  box-sizing: border-box;
+  width: 50%;
+  background: #FFF;
+  margin-top: 15vh;
+}
+
+.registerBox .register-header {
+  padding: 20px 20px 10px;
+}
+
+.registerBox .closeRegisterBox {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  color: #979aa0;
+}
+
+.registerBox .register-body {
+  padding: 30px 20px;
+  color: #606266;
+  font-size: 14px;
+  word-break: break-all;
+}
