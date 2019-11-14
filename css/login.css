@@ -122,3 +122,24 @@
   font-size: 14px;
   word-break: break-all;
 }
+
+.registerBox .register-body .layui-form-label {
+  padding: 9px 0;
+}
+
+.registerBox .register-body .layui-form-label span {
+  color: red;
+}
+
+.registerBox .register-body .layui-input-block input {
+  border: 1px solid #DCDFE6;
+  font-size: 14px;
+}
+
+.registerBox .register-body .layui-input-block input:focus {
+  border: 1px solid #03abf4fa!important;
+}
+
+.registerBox .register-body .submitReg {
+  width: 100px;
+}

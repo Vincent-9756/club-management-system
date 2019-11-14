@@ -28,7 +28,55 @@
               <span class="closeRegisterBox">x</span>
             </div>
             <div class="register-body">
-              
+              <form class="layui-form" action="" lay-filter="example">
+                <div class="layui-form-item">
+                  <label class="layui-form-label"><span>* </span>用户名</label>
+                  <div class="layui-input-block">
+                    <input type="text" name="username" lay-verify="title" autocomplete="off" class="layui-input">
+                    <div class="form-item__error">请输入用户名</div>
+                  </div>
+                </div>
+                <div class="layui-form-item">
+                  <label class="layui-form-label"><span>* </span>密码</label>
+                  <div class="layui-input-block">
+                    <input type="password" name="password" autocomplete="off" class="layui-input">
+                    <div class="form-item__error">请输入密码</div>
+                  </div>
+                </div>
+                <div class="layui-form-item">
+                  <label class="layui-form-label"><span>* </span>重复密码</label>
+                  <div class="layui-input-block">
+                    <input type="password" name="password" autocomplete="off" class="layui-input">
+                    <div class="form-item__error">请重复密码</div>
+                  </div>
+                </div>
+                <div class="layui-form-item">
+                  <label class="layui-form-label">单选框</label>
+                  <div class="layui-input-block">
+                    <input type="radio" name="sex" value="男" title="男" checked="">
+                    <input type="radio" name="sex" value="女" title="女">
+                  </div>
+                </div>
+                <div class="layui-form-item">
+                  <label class="layui-form-label"><span>* </span>姓名</label>
+                  <div class="layui-input-block">
+                    <input type="text" name="username" lay-verify="title" autocomplete="off" class="layui-input">
+                    <div class="form-item__error">请输入姓名</div>
+                  </div>
+                </div>
+                <div class="layui-form-item">
+                  <label class="layui-form-label">电话</label>
+                  <div class="layui-input-block">
+                    <input type="text" name="username" lay-verify="title" autocomplete="off" class="layui-input">
+                  </div>
+                </div><div class="layui-form-item">
+                  <label class="layui-form-label">邮箱</label>
+                  <div class="layui-input-block">
+                    <input type="text" name="username" lay-verify="title" autocomplete="off" class="layui-input">
+                  </div>
+                </div>
+                <button type="submit" class="layui-btn submitReg" lay-submit="" lay-filter="demo1">注册</button>
+              </form>
             </div>
           </div>
       </div>

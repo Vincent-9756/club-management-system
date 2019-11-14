@@ -1,4 +1,4 @@
-$('.innerUser input').blur(function () {
+$('.innerUser input,.registerBox .register-body .layui-input-block input').blur(function () {
   if ($(this).val() == '') {
     $(this).addClass('form-error')
   } else {
@@ -6,8 +6,24 @@ $('.innerUser input').blur(function () {
   }
 });
 
+$('#loginBtn').click(function() {
+  window.location.href = "../html/home.html";
+})
+
 $('#registerBtn').click(function () {
-  $('.wrrap').show()
+  $('.wrrap').show();
+  layui.use(['form', 'layedit', 'laydate'], function(){
+    var form = layui.form
+    ,layer = layui.layer
+    ,layedit = layui.layedit
+    ,laydate = layui.laydate;
+    form.on('submit(demo1)', function(data){
+      layer.alert(JSON.stringify(data.field), {
+        title: '最终的提交信息'
+      })
+      return false;
+    });
+  });
 })
 
 $('.closeRegisterBox').click(function () {
