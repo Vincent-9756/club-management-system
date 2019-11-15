@@ -98,7 +98,31 @@
   padding: 15px;
 }
 
+.contentShow {
+  display: none;
+}
+
+.contentShow .layui-card-header {
+  text-align: center;
+  color: #32ddd2;
+  font-size: 22px;
+}
+
 /* 底部 */
 .layui-layout-admin .layui-footer {
   left: 220px;
+  height: 59px;
+  line-height: 59px;
+  text-align: center;
+}
+
+.layui-layout-admin .layui-footer .footLogo {
+  display: inline-block;
+  width: 230px;
+  height: 59px;
+}
+
+.layui-layout-admin .layui-footer .footLogo img {
+  width: 100%;
+  height: 100%;
 }

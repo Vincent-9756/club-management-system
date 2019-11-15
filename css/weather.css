@@ -1,0 +1,116 @@
+body {
+  overflow: auto;
+  -ms-overflow-style:none;
+  scrollbar-width: none;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+.welcome-info {
+  width: 100%;
+  height: 100%;
+  padding: 15px;
+  color: #32ddd2;
+}
+
+.skin1 {
+  font-size: 20px;
+}
+
+.skin1 img {
+  height: 20px;
+  vertical-align: middle;
+}
+
+.skin2 {
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+}
+
+.skin2 .top {
+  font-size: 22px;
+  overflow: hidden;
+  padding: 20px;
+  text-align: center;
+}
+
+.skin2 .mid {
+  overflow: hidden;
+  padding: 20px;
+  text-align: center;
+}
+
+.skin2 .mid .midLeft {
+  background: #32ddd2;
+  padding: 20px;
+  display: inline-block;
+}
+
+.skin2 .mid .midLeft img {
+  height: 80px;
+}
+
+.skin2 .mid .midRight {
+  padding: 20px;
+  display: inline-block;
+}
+
+.skin2 .mid .midRight h2 {
+  font-size: 20px;
+  line-height: 28px;
+  margin: 0;
+}
+
+.skin2 .mid .midRight p {
+  font-size: 20px;
+  line-height: 28px;
+  margin: 0;
+}
+
+.skin2 .bot {
+  font-size: 16px;
+  padding: 20px;
+  text-align: center;
+}
+
+.skin2 .bot ul {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.skin2 .bot li {
+  border-top: 1px dashed #DDDDDD;
+  padding-top: 10px;
+  margin-top: 10px;
+}
+
+.skin2 .bot li:first-child {
+  border-top: 0;
+  padding-top: 0;
+  margin-top: 0;
+}
+
+.skin2 .bot li * {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.skin2 .bot li em {
+  font-style: normal;
+  width: 100px;
+}
+
+.skin2 .bot li span {
+  font-style: normal;
+  width: 117px;
+}
+
+.skin2 .bot li strong {
+  font-style: normal;
+  width: 117px;
+}

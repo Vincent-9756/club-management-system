@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/weather.css">
+</head>
+
+<body>
+  <div class="welcome-info">
+      <div class="skin2" id="weather1"></div>
+    </div>
+  </div>
+
+  <script src="../js/jquery-3.4.1.min.js"></script>
+  <script src="../js/jquery.leoweather.all.js"></script>
+  <script src="../layui/layui.js"></script>
+
+  <script type="text/javascript">
+    $('#weather0').leoweather({
+      appid: '86986721',
+      appsecret: 'eXm5G85Y',
+      city: ''
+    });
+    $('#weather1').leoweather({
+      appid: '86986721',
+      appsecret: 'eXm5G85Y',
+      format: '<div class="top">' +
+        '{时段}好！现在是：{年}/{月}/{日} {时}:{分}:{秒} 星期{周}' +
+        '</div>' +
+        '<div class="mid">' +
+        '<div class="midLeft"><img src="https://xuesax.com/tianqiapi/skin/cake/{图标}.png" /></div>' +
+        '<div class="midRight"><h2>当前城市：{城市}<br> 天气状况：{天气}</h2><p>{最低气温}~{最高气温}</p><p>{风向}{风级}</p></div>' +
+        '</div>' +
+        '<div class="bot">' +
+        '<ul>' +
+        '<li><strong>{人性化日期+1}</strong><span>{天气+1}</span><em>{最低气温+1}~{最高气温+1}</em></li>' +
+        '<li><strong>{人性化日期+2}</strong><span>{天气+2}</span><em>{最低气温+2}~{最高气温+2}</em></li>' +
+        '<li><strong>{人性化日期+3}</strong><span>{天气+3}</span><em>{最低气温+3}~{最高气温+3}</em></li>' +
+        '<li><strong>{人性化日期+4}</strong><span>{天气+4}</span><em>{最低气温+4}~{最高气温+4}</em></li>' +
+        '<li><strong>{人性化日期+5}</strong><span>{天气+5}</span><em>{最低气温+5}~{最高气温+5}</em></li>' +
+        '<li><strong>{人性化日期+6}</strong><span>{天气+6}</span><em>{最低气温+6}~{最高气温+6}</em></li>' +
+        '</ul>' +
+        '</div>'
+    });
+  </script>
+</body>
+
+</html>

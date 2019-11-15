@@ -6,18 +6,24 @@ $('.innerUser input,.registerBox .register-body .layui-input-block input').blur(
   }
 });
 
-$('#loginBtn').click(function() {
+$(document).keydown(function (event) {
+  if (event.keyCode == 13) {
+    document.getElementById("loginBtn").click();
+  }
+});
+
+$('#loginBtn').click(function () {
   window.location.href = "../html/home.html";
 })
 
 $('#registerBtn').click(function () {
   $('.wrrap').show();
-  layui.use(['form', 'layedit', 'laydate'], function(){
-    var form = layui.form
-    ,layer = layui.layer
-    ,layedit = layui.layedit
-    ,laydate = layui.laydate;
-    form.on('submit(demo1)', function(data){
+  layui.use(['form', 'layedit', 'laydate'], function () {
+    var form = layui.form,
+      layer = layui.layer,
+      layedit = layui.layedit,
+      laydate = layui.laydate;
+    form.on('submit(demo1)', function (data) {
       layer.alert(JSON.stringify(data.field), {
         title: '最终的提交信息'
       })

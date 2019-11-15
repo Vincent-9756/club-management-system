@@ -1,9 +1,16 @@
+if ($('#changeIframes').attr('src') == '') {
+  $('.contentShow').show();
+  $('.contentShow .layui-card-header').text('欢迎来到校园社团管理系统'+''+$('.userName').text()+'~')
+  $('#changeIframes').attr('src', '../html/weather.html');
+  $('#iframeBox').css('height', 'calc(100% - 92px)');
+}
+
 layui.use(['element', 'layer'], function () {
   var element = layui.element;
   var layer = layui.layer;
 
   // layer.open({
-  //   content: '欢迎来到校园社团管理系统~'
+  //   content: '欢迎来到校园社团管理系统'+''+$('.userName').text()+'~',
   // });
 
   element.on('nav(test)', function(elem){
@@ -13,7 +20,9 @@ layui.use(['element', 'layer'], function () {
     } else {
         event.returnValue = false;
     }
-    $('#changeIframes').attr('src', elem[0].href)
+    $('.contentShow').hide();
+    $('#changeIframes').attr('src', elem[0].href);
+    $('#iframeBox').css('height', '100%');
   });
 
   $('#logout').click(function () {
