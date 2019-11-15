@@ -1,2 +1,2 @@
 # club-management-system
-社团管理
+基于jquery的社团管理系统
