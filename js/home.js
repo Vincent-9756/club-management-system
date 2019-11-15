@@ -1,6 +1,6 @@
 if ($('#changeIframes').attr('src') == '') {
   $('.contentShow').show();
-  $('.contentShow .layui-card-header').text('欢迎来到校园社团管理系统'+''+$('.userName').text()+'~')
+  $('.contentShow .layui-card-header').text('欢迎来到校园社团管理系统' + '' + $('.userName').text() + '~')
   $('#changeIframes').attr('src', '../html/weather.html');
   $('#iframeBox').css('height', 'calc(100% - 92px)');
 }
@@ -13,12 +13,12 @@ layui.use(['element', 'layer'], function () {
   //   content: '欢迎来到校园社团管理系统'+''+$('.userName').text()+'~',
   // });
 
-  element.on('nav(test)', function(elem){
+  element.on('nav(test)', function (elem) {
     var event = event || window.event;
     if (event.preventDefault) {
-        event.preventDefault();
+      event.preventDefault();
     } else {
-        event.returnValue = false;
+      event.returnValue = false;
     }
     $('.contentShow').hide();
     $('#changeIframes').attr('src', elem[0].href);
@@ -28,7 +28,7 @@ layui.use(['element', 'layer'], function () {
   $('#logout').click(function () {
     layer.open({
       content: '退出成功',
-      success: function(){
+      success: function () {
         window.location.href = '../html/login.html'
       }
     });
@@ -55,3 +55,23 @@ $('#sideNav-hide').click(function () {
   }
 
 });
+
+var cars = $(".contentShow .layui-card-header").width();
+var w = $(window).width();
+var i = w;
+
+function start() {
+  i--;
+  if (i <= -cars) {
+    i = w;
+    $('.contentShow .layui-card-header').css({
+      right: 0 + 'px'
+    });
+  } else {
+    $('.contentShow .layui-card-header').css({
+      left: i + 'px'
+    });
+  }
+  setTimeout(start, 10);
+}
+setTimeout(start, 100);
