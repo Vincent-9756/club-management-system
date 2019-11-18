@@ -29,7 +29,7 @@
   width: 100%;
 }
 
-.innerUser input {
+.innerUser input,.registerBox input {
   width: 100%;
   height: 40px;
   line-height: 40px;
@@ -42,6 +42,10 @@
   color: #606266;
   display: inline-block;
   font-size: 14px;
+}
+
+.registerBox input {
+  margin-top: 0;
 }
 
 .innerUser input:focus {
@@ -60,12 +64,12 @@
   display: block!important;
 }
 
-#loginBtn,#registerBtn {
+#loginBtn,#toregisterBtn {
   width: 80%;
   margin: 20px;
 }
 
-#registerBtn {
+#toregisterBtn {
   margin-top: 0;
 }
 

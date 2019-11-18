@@ -1,18 +1,35 @@
+$('#home .userName').html('<img src="http://t.cn/RCzsdCq" class="layui-nav-img">' + getCookie('username'))
 if ($('#changeIframes').attr('src') == '') {
   $('.contentShow').show();
-  $('.contentShow .layui-card-header').text('欢迎来到校园社团管理系统' + '' + $('.userName').text() + '~')
+  $('.contentShow .layui-card-header').text('欢迎来到校园社团管理系统' + '~' + $('#home .userName').text())
   $('#changeIframes').attr('src', '../html/weather.html');
   $('#iframeBox').css('height', 'calc(100% - 92px)');
+  var cars = $(".contentShow .layui-card-header").width();
+  var w = $(window).width();
+  var i = w;
+
+  function start() {
+    i--;
+    if (i <= -cars) {
+      i = w;
+      $('.contentShow .layui-card-header').css({
+        right: 0 + 'px'
+      });
+    } else {
+      $('.contentShow .layui-card-header').css({
+        left: i + 'px'
+      });
+    }
+    setTimeout(start, 10);
+  }
+  setTimeout(start, 100);
 }
 
 layui.use(['element', 'layer'], function () {
   var element = layui.element;
   var layer = layui.layer;
 
-  // layer.open({
-  //   content: '欢迎来到校园社团管理系统'+''+$('.userName').text()+'~',
-  // });
-
+  //切换导航栏
   element.on('nav(test)', function (elem) {
     var event = event || window.event;
     if (event.preventDefault) {
@@ -25,14 +42,19 @@ layui.use(['element', 'layer'], function () {
     $('#iframeBox').css('height', '100%');
   });
 
+  //退出登录
   $('#logout').click(function () {
-    layer.open({
-      content: '退出成功',
-      success: function () {
-        window.location.href = '../html/login.html'
+    $.ajax({
+      type: "get",
+      url: url + "/user/logout",
+      success: function (res) {
+        layer.msg('退出成功');
+        setTimeout(() => {
+          window.location.href = '../html/login.html'
+        }, 2000);
+        $(this).removeClass('layui-this');
       }
     });
-    $(this).removeClass('layui-this');
   });
 });
 
@@ -53,25 +75,36 @@ $('#sideNav-hide').click(function () {
     $('.layui-layout-left,.layui-body,.layui-layout-admin .layui-footer').css('left', '60px');
     $(this).children().first().html('<i class="layui-icon layui-icon-spread-left"></i>');
   }
-
 });
 
-var cars = $(".contentShow .layui-card-header").width();
-var w = $(window).width();
-var i = w;
-
-function start() {
-  i--;
-  if (i <= -cars) {
-    i = w;
-    $('.contentShow .layui-card-header').css({
-      right: 0 + 'px'
-    });
-  } else {
-    $('.contentShow .layui-card-header').css({
-      left: i + 'px'
-    });
+// 获取导航栏
+layui.use('element', function () {
+  layui.element.render();
+})
+$.ajax({
+  type: "get",
+  url: url + "/user/queryMenu",
+  success: function (res) {
+    console.log(res)
+    var data = ''
+    for (let i = 0; i < res.length; i++) {
+      data += '<li class="layui-nav-item"><a href="javascript:;"><i class="layui-icon ' + res[i].icon + '"></i>' + res[i].title + '</a>';
+      // console.log(res[i])
+      if (res[i].list.length != 0) {
+        for (let e = 0; e < res[i].list.length; e++) {
+          console.log(res[i].list[e])
+          data += '<dl class="layui-nav-child">\n' +
+            '<dd><a href="../html/weather.html">' + res[i].list[e].title + '</a></dd>\n' +
+            '</dl>\n' +
+            '</li>\n';
+        }
+      } else {
+        data += '</li>\n';
+      }
+    }
+    $('.leftMenu ul').append(data);
+    layui.use('element', function () {
+      layui.element.render();
+    })
   }
-  setTimeout(start, 10);
-}
-setTimeout(start, 100);
+});

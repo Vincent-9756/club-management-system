@@ -27,7 +27,6 @@
 					weather['city'] = w.city;
 					weather['data'] = w.data;
 					setTimer();
-					console.log(weather);  //二次修改请自己删除注释，查看API返回数据
 				}
 			});
 			function getContent(type){

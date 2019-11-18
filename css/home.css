@@ -5,7 +5,7 @@
 
 /* 头部导航 */
 .layui-layout-admin .layui-header {
-  background-color: #1aa094!important;
+  background-color: #1aa094 !important;
 }
 
 .layui-layout-left {
@@ -31,7 +31,7 @@
 }
 
 .layui-header .layui-layout-right .layui-nav-child dd a {
-  color: #333!important;
+  color: #333 !important;
 }
 
 /* 左边导航 */
@@ -39,7 +39,16 @@
   width: 220px;
   top: 0;
   z-index: 1001;
+}
 
+.leftMenu {
+  overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.leftMenu::-webkit-scrollbar {
+  display: none;
 }
 
 .layui-nav-tree {
