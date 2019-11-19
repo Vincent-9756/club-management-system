@@ -13,6 +13,13 @@
 body {
   line-height: 1.6;
   background: #2b4159;
+  overflow: auto;
+  -ms-overflow-style:none;
+  scrollbar-width: none;
+}
+
+body::-webkit-scrollbar {
+  display: none;
 }
 
 ol,

@@ -88,7 +88,6 @@ $.ajax({
     withCredentials: true
   },
   success: function (res) {
-    console.log(res)
     var data = ''
     for (let i = 0; i < res.length; i++) {
       data += '<li class="layui-nav-item"><a href="javascript:;"><i class="layui-icon ' + res[i].icon + '"></i>' + res[i].title + '</a>';

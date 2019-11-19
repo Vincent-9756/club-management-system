@@ -21,7 +21,6 @@ function queryFaculty() {
       "description": ""
     }),
     success: function (res) {
-      console.log(res)
       var data = ''
       for (let i = 0; i < res.data.length; i++) {
         data += '<li class="c-col6">\n' +
