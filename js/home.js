@@ -84,6 +84,9 @@ layui.use('element', function () {
 $.ajax({
   type: "get",
   url: url + "/user/queryMenu",
+  xhrFields: {
+    withCredentials: true
+  },
   success: function (res) {
     console.log(res)
     var data = ''
@@ -92,12 +95,11 @@ $.ajax({
       // console.log(res[i])
       if (res[i].list.length != 0) {
         for (let e = 0; e < res[i].list.length; e++) {
-          console.log(res[i].list[e])
           data += '<dl class="layui-nav-child">\n' +
-            '<dd><a href="../html/weather.html">' + res[i].list[e].title + '</a></dd>\n' +
-            '</dl>\n' +
-            '</li>\n';
+            '<dd><a href="' + res[i].list[e].jump + '">' + res[i].list[e].title + '</a></dd>\n' +
+            '</dl>\n';
         }
+        data += '</li>\n';
       } else {
         data += '</li>\n';
       }
