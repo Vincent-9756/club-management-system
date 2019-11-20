@@ -123,6 +123,7 @@
   height: 59px;
   line-height: 59px;
   text-align: center;
+  z-index: 999;
 }
 
 .layui-layout-admin .layui-footer .footLogo {

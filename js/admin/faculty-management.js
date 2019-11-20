@@ -9,6 +9,7 @@ $('.closeEditBox').click(function() {
   $('.edit-facultyBox').hide();
 });
 
+// 查找院系函数
 function queryFaculty() {
   $.ajax({
     type: "post",
@@ -43,6 +44,7 @@ $('.m-product-panel-list li').hover(function () {
   $(this).addClass('active').siblings().removeClass('active');
 })
 
+// 添加院系
 $('#add-faculty').click(function () {
   $('.add-facultyBox').show();
   $('#add-facultyToService').click(function () {
@@ -68,6 +70,7 @@ $('#add-faculty').click(function () {
   })
 });
 
+// 删除院系
 $('body').on('click', '.deleteFaculty', function () {
   $.ajax({
     type: "get",
@@ -82,6 +85,7 @@ $('body').on('click', '.deleteFaculty', function () {
   });
 });
 
+// 修改院系
 $('body').on('click', '.editFaculty', function () {
   facultyId = $(this).attr('value')
   checkFaculty(facultyId)
@@ -108,6 +112,7 @@ $('#edit-facultyToService').click(function () {
   });
 })
 
+// 查看院系
 function checkFaculty(e) {
   $.ajax({
     type: "get",

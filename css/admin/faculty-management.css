@@ -109,7 +109,7 @@ ul {
 }
 
 .m-product-panel .m-product-panel-list>li .m-product-panel-list-note {
-  height: 100px;
+  height: 200px;
   color: #7d7e7e;
   color: rgba(0, 0, 0, .5);
   font-size: 16px;
@@ -118,11 +118,17 @@ ul {
   transition: -webkit-transform .3s ease .05s;
   transition: transform .3s ease .05s;
   transition: transform .3s ease .05s, -webkit-transform .3s ease .05s;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  overflow: auto;
+  -ms-overflow-style:none;
+  scrollbar-width: none;
+  /* text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
+  -webkit-box-orient: vertical; */
+}
+
+.m-product-panel .m-product-panel-list>li .m-product-panel-list-note::-webkit-scrollbar {
+  display: none;
 }
 
 .m-product-panel .m-product-panel-list>li .m-product-panel-list-button {
