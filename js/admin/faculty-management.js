@@ -1,5 +1,8 @@
 let facultyId;
 queryFaculty();
+layui.use('layer', function () {
+  layer = layui.layer;
+});
 
 $('.closeAddBox').click(function() {
   $('.add-facultyBox').hide();
@@ -59,6 +62,7 @@ $('#add-faculty').click(function () {
         "description": $('#addDescription').val()
       }),
       success: function (res) {
+        layer.msg('添加成功');
         $('.add-facultyBox').hide();
         $('#addName').val('');
         $('#addCode').val('');
@@ -79,6 +83,7 @@ $('body').on('click', '.deleteFaculty', function () {
       "id": $(this).attr('value')
     },
     success: function (response) {
+      layer.msg('删除成功');
       $('.m-product-panel-list').empty();
       queryFaculty();
     }
@@ -105,6 +110,7 @@ $('#edit-facultyToService').click(function () {
       "description": $('#editDescription').val()
     }),
     success: function (res) {
+      layer.msg('修改成功');
       $('.edit-facultyBox').hide();
       $('.m-product-panel-list').empty();
       queryFaculty();

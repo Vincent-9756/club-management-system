@@ -150,6 +150,14 @@ tbody,
   width: 100px;
 }
 
+.studentBox2 .f-push,.studentBox3 .f-push {
+  width: 100%;
+}
+
+.studentBox2 .f-push>div,.studentBox3 .f-push>div {
+  width: 100%;
+}
+
 .marker>p:after {
   background: url('../../images/up.png') !important;
 }
@@ -158,6 +166,22 @@ tbody,
   margin-top: 20px;
   display: flex;
   justify-content: space-around;
+}
+
+.searchBox .searchName {
+  width: 205px;
+  height: 38px;
+  line-height: 38px;
+  text-indent: 14px;
+  position: relative;
+  border: 1px solid #e6e6e6;
+}
+
+.searchBox .searchName img {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  cursor: pointer;
 }
 
 .f-push {

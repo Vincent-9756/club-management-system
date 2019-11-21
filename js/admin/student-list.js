@@ -1,5 +1,7 @@
 var numStudent = 1; //当前页
 let tableLength; // 分页长度
+let editId;
+let status = true;
 let studentObj = {
   "id": '',
   "name": '',
@@ -46,7 +48,7 @@ function getStudentData(first) {
       for (let index = 0; index < res.data.length; index++) {
         data += '<tr>\n' +
           '<td>\n' +
-          '<div>' + ((index + 1) + (numStudent - 1) * 10) + '</div>\n' +
+          '<div>' + ((index + 1) + (studentObj.pageNum - 1) * 10) + '</div>\n' +
           '</td>\n' +
           '<td>\n' +
           '<div>' + res.data[index].name + '</div>\n' +
@@ -93,7 +95,7 @@ function changePage(el) {
       prev: '<em>←</em>',
       next: '<em>→</em>',
       jump: function (obj, first) {
-        numStudent = obj.curr;
+        studentObj.pageNum = obj.curr;
         if (!first) {
           getStudentData(1);
         }
@@ -130,46 +132,48 @@ $('.closeStudentBox').click(function () {
 
 // 修改学生信息
 $('body').on('click', '.editStudent', function () {
-  let editId = $(this).attr('value');
+  status = false;
+  editId = $(this).attr('value');
   getDetail($(this).attr('value'));
   $('.wrrap2').show();
-  $('.submitMessage').click(function () {
-    $.ajax({
-      type: "post",
-      url: url + "/student/updateStudentById",
-      dataType: "json",
-      contentType: "application/json;charset=UTF-8",
-      data: JSON.stringify({
-        "id": editId,
-        "name": $('.studentBox2 .userName').val(),
-        "sex": $('.studentBox2 .sex').val(),
-        "age": $('.studentBox2 .age').val(),
-        "birthday": $('.studentBox2 .birthday').val(),
-        "roots": $('.studentBox2 .roots').val(),
-        "volk": $('.studentBox2 .volk').val(),
-        "code": $('.studentBox2 .code').val(),
-        "idCard": $('.studentBox2 .idCard').val(),
-        "political": $('.studentBox2 .political').val(),
-        "address": $('.studentBox2 .address').val(),
-        "tel": $('.studentBox2 .tele').val(),
-        "email": $('.studentBox2 .email').val(),
-        "parentTel": $('.studentBox2 .parentTel').val(),
-        "parentName1": $('.studentBox2 .parentName1').val(),
-        "parentName2": $('.studentBox2 .parentName2').val(),
-        "profession": $('.studentBox2 .profession').val(),
-        "major": $('.studentBox2 .major').val(),
-        "grade": $('.studentBox2 .grade').val(),
-        "clazz": $('.studentBox2 .class').val(),
-        "content": ''
-      }),
-      success: function (res) {
-        layer.msg('修改成功');
-        $('#studentTable').empty();
-        getStudentData();
-        $('.wrrap2').hide();
-      }
-    });
-  })
+});
+
+$('.submitMessage').click(function () {
+  $.ajax({
+    type: "post",
+    url: url + "/student/updateStudentById",
+    dataType: "json",
+    contentType: "application/json;charset=UTF-8",
+    data: JSON.stringify({
+      "id": editId,
+      "name": $('.studentBox2 .userName').val(),
+      "sex": $('.studentBox2 .sex').val(),
+      "age": $('.studentBox2 .age').val(),
+      "birthday": $('.studentBox2 #birthday').val(),
+      "roots": $('.studentBox2 .roots').val(),
+      "volk": $('.studentBox2 .volk').val(),
+      "code": $('.studentBox2 .code').val(),
+      "idCard": $('.studentBox2 .idCard').val(),
+      "political": $('.studentBox2 .political').val(),
+      "address": $('.studentBox2 .address').val(),
+      "tel": $('.studentBox2 .tele').val(),
+      "email": $('.studentBox2 .email').val(),
+      "parentTel": $('.studentBox2 .parentTel').val(),
+      "parentName1": $('.studentBox2 .parentName1').val(),
+      "parentName2": $('.studentBox2 .parentName2').val(),
+      "profession": $('.studentBox2 #professionName2').text(),
+      "major": $('.studentBox2 #majorName2').text(),
+      "grade": $('.studentBox2 .grade').val(),
+      "clazz": $('.studentBox2 #className2').text(),
+      "content": ''
+    }),
+    success: function (res) {
+      layer.msg('修改成功');
+      $('#studentTable').empty();
+      getStudentData();
+      $('.wrrap2').hide();
+    }
+  });
 });
 
 $('.closeStudentBox2').click(function () {
@@ -185,19 +189,22 @@ function getDetail(e) {
       "id": e
     },
     success: function (res) {
-      console.log(res)
       $('.studentBox .userName,.studentBox2 .userName').val(res.name);
       $('.studentBox .age,.studentBox2 .age').val(res.age);
       $('.studentBox .sex,.studentBox2 .sex').val(res.sex);
       $('.studentBox .address,.studentBox2 .address').val(res.address);
       $('.studentBox .roots,.studentBox2 .roots').val(res.roots);
-      $('.studentBox .birthday,.studentBox2 .birthday').val(res.birthday);
+      $('.studentBox .birthday').val(res.birthday);
+      $('.studentBox2 #birthday').val(res.birthday)
       $('.studentBox .idCard,.studentBox2 .idCard').val(res.idCard);
       $('.studentBox .code,.studentBox2 .code').val(res.code);
-      $('.studentBox .profession,.studentBox2 .profession').val(res.profession);
-      $('.studentBox .major,.studentBox2 .major').val(res.major);
+      $('.studentBox .profession').val(res.profession);
+      $('.studentBox2 #professionName2').text(res.profession);
+      $('.studentBox .major').val(res.major);
+      $('.studentBox2 #majorName2').text(res.major);
       $('.studentBox .grade,.studentBox2 .grade').val(res.grade);
-      $('.studentBox .class,.studentBox2 .class').val(res.clazz);
+      $('.studentBox .class').val(res.clazz);
+      $('.studentBox2 #className2').text(res.clazz);
       $('.studentBox .volk,.studentBox2 .volk').val(res.volk);
       $('.studentBox .political,.studentBox2 .political').val(res.political);
       $('.studentBox .tele,.studentBox2 .tele').val(res.tel);
@@ -205,6 +212,13 @@ function getDetail(e) {
       $('.studentBox .parentName1,.studentBox2 .parentName1').val(res.parentName1);
       $('.studentBox .parentName2,.studentBox2 .parentName2').val(res.parentName2);
       $('.studentBox .parentTel,.studentBox2 .parentTel').val(res.parentTel);
+
+      for (let i = 0; i < $('.professionBox2').children('div').length; i++) {
+        if ($('#professionName2').text() == $('.professionBox2').children('div').eq(i).text()) {
+          $('#professionName2').attr('value', $('.professionBox2').children('div').eq(i).attr('value'));
+          $('#professionName2').text($('.professionBox2').children('div').eq(i).text())
+        }
+      }
     }
   });
 }
@@ -222,7 +236,7 @@ $('.addStudent').click(function () {
         "name": $('.studentBox3 .userName').val(),
         "sex": $('.studentBox3 .sex').val(),
         "age": $('.studentBox3 .age').val(),
-        "birthday": $('.studentBox3 .birthday').val(),
+        "birthday": $('.studentBox3 #birthday2').val(),
         "roots": $('.studentBox3 .roots').val(),
         "volk": $('.studentBox3 .volk').val(),
         "code": $('.studentBox3 .code').val(),
@@ -234,10 +248,10 @@ $('.addStudent').click(function () {
         "parentTel": $('.studentBox3 .parentTel').val(),
         "parentName1": $('.studentBox3 .parentName1').val(),
         "parentName2": $('.studentBox3 .parentName2').val(),
-        "profession": $('.studentBox3 .profession').val(),
-        "major": $('.studentBox3 .major').val(),
+        "profession": $('.studentBox3 #professionName').text(),
+        "major": $('.studentBox3 #majorName').text(),
         "grade": $('.studentBox3 .grade').val(),
-        "clazz": $('.studentBox3 .class').val(),
+        "clazz": $('.studentBox3 #className').text(),
         "content": ''
       }),
       success: function (res) {
@@ -245,7 +259,7 @@ $('.addStudent').click(function () {
         $('.studentBox3 .userName').val('');
         $('.studentBox3 .sex').val('');
         $('.studentBox3 .age').val('');
-        $('.studentBox3 .birthday').val('');
+        $('.studentBox3 #birthday2').val('');
         $('.studentBox3 .roots').val('');
         $('.studentBox3 .volk').val('');
         $('.studentBox3 .code').val('');
@@ -257,10 +271,10 @@ $('.addStudent').click(function () {
         $('.studentBox3 .parentTel').val('');
         $('.studentBox3 .parentName1').val('');
         $('.studentBox3 .parentName2').val('');
-        $('.studentBox3 .profession').val('');
-        $('.studentBox3 .major').val('');
+        $('.studentBox3 #professionName').text('院系');
+        $('.studentBox3 #majorName').text('专业');
         $('.studentBox3 .grade').val('');
-        $('.studentBox3 .class').val('');
+        $('.studentBox3 #className').text('班级');
         $('.wrrap3').hide();
         $('#studentTable').empty();
         getStudentData();
@@ -270,6 +284,25 @@ $('.addStudent').click(function () {
 });
 
 $('.closeStudentBox3').click(function () {
+  $('.studentBox3 .userName').val('');
+  $('.studentBox3 .sex').val('');
+  $('.studentBox3 .age').val('');
+  $('.studentBox3 .birthday').val('');
+  $('.studentBox3 .roots').val('');
+  $('.studentBox3 .volk').val('');
+  $('.studentBox3 .code').val('');
+  $('.studentBox3 .idCard').val('');
+  $('.studentBox3 .political').val('');
+  $('.studentBox3 .address').val('');
+  $('.studentBox3 .tele').val('');
+  $('.studentBox3 .email').val('');
+  $('.studentBox3 .parentTel').val('');
+  $('.studentBox3 .parentName1').val('');
+  $('.studentBox3 .parentName2').val('');
+  $('.studentBox3 #professionName').text('院系');
+  $('.studentBox3 .majorName').text('专业');
+  $('.studentBox3 .grade').val('');
+  $('.studentBox3 .className').text('班级');
   $('.wrrap3').hide();
 });
 
@@ -294,6 +327,24 @@ $(document).on('click', '.f-push>p', function () {
   }
 });
 
+// 搜索输入框
+// $('.searchName').on('click', 'img', function () {
+//   studentObj.name = $('.searchName input').val();
+//   getStudentData();
+// });
+
+// $('.searchName input').bind('keypress', function (e) {
+//   if (e.keyCode == '13') {
+//     studentObj.name = $('.searchName input').val();
+//     getStudentData();
+//   }
+// });
+
+$('.searchName :input').on('input propertychange', function () {
+  studentObj.name = $('.searchName input').val();
+  getStudentData();
+});
+
 // 获取院系下拉框
 $.ajax({
   type: "get",
@@ -304,6 +355,8 @@ $.ajax({
       data += '<div value=" ' + res[index].id + ' ">' + res[index].name + '</div>\n'
     }
     $('.professionType').append(data);
+    $('.professionBox').append(data);
+    $('.professionBox2').append(data);
   }
 });
 
@@ -326,6 +379,40 @@ $('#professionTypeName').bind('DOMNodeInserted', function () {
         data += '<div value=" ' + res[index].id + ' ">' + res[index].name + '</div>\n'
       }
       $('.majorType').append(data);
+    }
+  });
+});
+$('#professionName,#professionName2').bind('DOMNodeInserted', function () {
+  if (!$(this).attr('value')) {
+    return
+  }
+  $('.majorBox').empty();
+  $('.majorBox2').empty();
+  $('#majorName').text('专业');
+  $('#className').text('班级');
+  if (status == true) {
+    $('#majorName2').text('专业');
+    $('#className2').text('班级');
+  }
+  $.ajax({
+    type: "get",
+    url: url + "/major/getMajorItem",
+    data: {
+      "id": $(this).attr('value')
+    },
+    success: function (res) {
+      var data = '';
+      for (let index = 0; index < res.length; index++) {
+        data += '<div value=" ' + res[index].id + ' ">' + res[index].name + '</div>\n'
+      }
+      $('.majorBox').append(data);
+      $('.majorBox2').append(data);
+      for (let i = 0; i < $('.majorBox2').children('div').length; i++) {
+        if ($('#majorName2').text() == $('.majorBox2').children('div').eq(i).text()) {
+          $('#majorName2').attr('value', $('.majorBox2').children('div').eq(i).attr('value'));
+          $('#majorName2').text($('.majorBox2').children('div').eq(i).text())
+        }
+      }
     }
   });
 });
@@ -356,6 +443,34 @@ $('#majorTypeName').bind('DOMNodeInserted', function () {
   });
 });
 
+$('#majorName,#majorName2').bind('DOMNodeInserted', function () {
+  if ($(this).text() == '专业' || !$(this).attr('value')) {
+    return
+  }
+  $('.classBox').empty();
+  $('#className').text('班级');
+  if (status == true) {
+    $('#className2').text('班级');
+  }
+  $('.classBox2').empty();
+  $.ajax({
+    type: "get",
+    url: url + "/clazz/getClazzItem",
+    data: {
+      "id": $(this).attr('value')
+    },
+    success: function (res) {
+      var data = '';
+      for (let index = 0; index < res.length; index++) {
+        data += '<div value=" ' + res[index].id + ' ">' + res[index].name + '</div>\n'
+      }
+      $('.classBox').append(data);
+      $('.classBox2').append(data);
+      status = true
+    }
+  });
+});
+
 $('#classTypeName').bind('DOMNodeInserted', function () {
   if ($('#classTypeName').text() == '班级') {
     studentObj.clazz = ''
@@ -364,3 +479,16 @@ $('#classTypeName').bind('DOMNodeInserted', function () {
   studentObj.clazz = $('#classTypeName').text();
   getStudentData(); // 选取班级1更新表格
 });
+
+layui.use('laydate', function () {
+  laydate = layui.laydate;
+  changeDate(birthday);
+  changeDate(birthday2);
+});
+
+function changeDate(id) {
+  laydate.render({
+    elem: id,
+    format: 'yyyy-MM-dd'
+});
+}
