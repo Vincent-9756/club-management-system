@@ -1,14 +1,168 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>校园社团管理系统</title>
+  <link rel="stylesheet" href="../../layui/css/layui.css" media="all">
+  <link rel="stylesheet" href="../../css/common.css">
+  <link rel="stylesheet" href="../../css/admin/professional-management.css">
 </head>
+
 <body>
-  <div>
-    专业管理
+  <div id="studentContainer">
+    <div class="layui-form">
+      <button type="button" class="layui-btn layui-btn-normal addStudent">添加专业</button>
+      <div class="searchBox">
+        <div class="f-push">
+          <p id="professionTypeName">院系</p>
+          <div class="professionType">
+          </div>
+        </div>
+        <div class="f-push">
+          <p id="majorTypeName">专业</p>
+          <div class="majorType">
+          </div>
+        </div>
+        <div class="searchName">
+          <input type="text" placeholder="请输入专业">
+          <img src="../../images/search.png" alt="">
+        </div>
+      </div>
+      <table class="layui-table">
+        <thead>
+          <tr>
+            <th>序号</th>
+            <th>院系</th>
+            <th>专业</th>
+            <th>人数</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody id="studentTable">
+        </tbody>
+      </table>
+      <div id="pagetion"></div>
+    </div>
+    <div class="wrrap">
+      <div class="studentBox">
+        <div class="student-header">
+          <span>专业信息</span>
+          <span class="closeStudentBox">x</span>
+        </div>
+        <div class="student-body">
+          <form class="layui-form" action="" lay-filter="example">
+            <div class="layui-form-item">
+              <label class="layui-form-label">院系:</label>
+              <div class="layui-input-block">
+                <input class="layui-input profession-name" type="text" name="username" lay-verify="title" autocomplete="off"
+                  readonly>
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">专业:</label>
+              <div class="layui-input-block">
+                <input class="layui-input major-name" type="text" name="username" lay-verify="title" autocomplete="off"
+                  readonly>
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">人数:</label>
+              <div class="layui-input-block">
+                <input class="layui-input num" type="text" name="username" lay-verify="title" autocomplete="off"
+                  readonly>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="wrrap2">
+      <div class="studentBox2">
+        <div class="student-header">
+          <span>专业信息</span>
+          <span class="closeStudentBox2">x</span>
+        </div>
+        <div class="student-body">
+          <form class="layui-form" action="" lay-filter="example">
+            <div class="layui-form-item">
+              <label class="layui-form-label">院系:</label>
+              <div class="layui-input-block">
+                <div class="f-push">
+                  <p id="professionName2">院系</p>
+                  <div class="professionBox2">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">专业:</label>
+              <div class="layui-input-block">
+                <div class="f-push">
+                  <p id="majorName2">专业</p>
+                  <div class="majorBox2">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">人数:</label>
+              <div class="layui-input-block">
+                <input class="layui-input num" type="text" name="username" lay-verify="title" autocomplete="off">
+              </div>
+            </div>
+            <div class="submitBox">
+              <button type="button" class="layui-btn layui-btn-normal submitMessage">提交</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="wrrap3">
+      <div class="studentBox3">
+        <div class="student-header">
+          <span>专业信息</span>
+          <span class="closeStudentBox3">x</span>
+        </div>
+        <div class="student-body">
+          <form class="layui-form" action="" lay-filter="example">
+            <div class="layui-form-item">
+              <label class="layui-form-label">院系:</label>
+              <div class="layui-input-block">
+                <div class="f-push">
+                  <p id="professionName">院系</p>
+                  <div class="professionBox">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">专业:</label>
+              <div class="layui-input-block">
+                <input class="layui-input majorName" type="text" name="username" lay-verify="title" autocomplete="off">
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">人数:</label>
+              <div class="layui-input-block">
+                <input class="layui-input num2" type="text" name="username" lay-verify="title" autocomplete="off">
+              </div>
+            </div>
+            <div class="submitBox">
+              <button type="button" class="layui-btn layui-btn-normal addMessage">添加</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
+
+  <script src="../../js/jquery-3.4.1.min.js"></script>
+  <script src="../../layui/layui.js"></script>
+  <script src="../../js/api.js"></script>
+  <script src="../../js/admin/professional-management.js"></script>
 </body>
+
 </html>

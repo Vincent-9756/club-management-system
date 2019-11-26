@@ -3,28 +3,11 @@ let tableLength; // 分页长度
 let editId;
 let status = true;
 let studentObj = {
-  "id": '',
+  "majorId": '',
   "name": '',
-  "sex": '',
-  "age": '',
-  "birthday": '',
-  "roots": '',
-  "volk": '',
-  "code": '',
-  "id_card": '',
-  "political": '',
-  "address": '',
-  "tel": '',
-  "email": '',
-  "parent_tel": '',
-  "parent_name1": '',
-  "parent_name2": '',
-  "school": '',
-  "major": '',
-  "grade": '',
-  "clazz": '',
-  "content": '',
-  "profession": '',
+  "num": '',
+  "majorName": '',
+  "professionName": '',
   "pageSize": 10,
   "pageNum": numStudent
 }
@@ -35,7 +18,7 @@ getStudentData();
 function getStudentData(first) {
   $.ajax({
     type: "post",
-    url: url + "/student/queryStudent",
+    url: url + "/clazz/queryClazz",
     dataType: "json",
     contentType: "application/json;charset=UTF-8",
     data: JSON.stringify(studentObj),
@@ -51,22 +34,16 @@ function getStudentData(first) {
           '<div>' + ((index + 1) + (studentObj.pageNum - 1) * 10) + '</div>\n' +
           '</td>\n' +
           '<td>\n' +
+          '<div>' + res.data[index].professionName + '</div>\n' +
+          '</td>\n' +
+          '<td>\n' +
+          '<div>' + res.data[index].majorName + '</div>\n' +
+          '</td>\n' +
+          '<td>\n' +
           '<div>' + res.data[index].name + '</div>\n' +
           '</td>\n' +
           '<td>\n' +
-          '<div>' + res.data[index].sex + '</div>\n' +
-          '</td>\n' +
-          '<td>\n' +
-          '<div>' + res.data[index].profession + '</div>\n' +
-          '</td>\n' +
-          '<td>\n' +
-          '<div>' + res.data[index].major + '</div>\n' +
-          '</td>\n' +
-          '<td>\n' +
-          '<div>' + res.data[index].grade + '级' + '</div>\n' +
-          '</td>\n' +
-          '<td>\n' +
-          '<div>' + res.data[index].clazz + '</div>\n' +
+          '<div>' + res.data[index].num + '</div>\n' +
           '</td>\n' +
           '<td>\n' +
           '<div class="operate">\n' +
@@ -104,11 +81,11 @@ function changePage(el) {
   });
 }
 
-// 删除学生
+// 删除班级
 $('body').on('click', '.deleteStudent', function () {
   $.ajax({
     type: "get",
-    url: url + "/student/delStudentById",
+    url: url + "/clazz/delClazzById",
     data: {
       "id": $(this).attr('value')
     },
@@ -120,7 +97,7 @@ $('body').on('click', '.deleteStudent', function () {
   });
 });
 
-// 查看学生详细信息
+// 查看班级详细信息
 $('body').on('click', '.checkDetail', function () {
   getDetail($(this).attr('value'));
   $('.wrrap').show();
@@ -130,7 +107,7 @@ $('.closeStudentBox').click(function () {
   $('.wrrap').hide();
 });
 
-// 修改学生信息
+// 修改班级信息
 $('body').on('click', '.editStudent', function () {
   status = false;
   editId = $(this).attr('value');
@@ -141,31 +118,16 @@ $('body').on('click', '.editStudent', function () {
 $('.submitMessage').click(function () {
   $.ajax({
     type: "post",
-    url: url + "/student/updateStudentById",
+    url: url + "/clazz/updateClazzById",
     dataType: "json",
     contentType: "application/json;charset=UTF-8",
     data: JSON.stringify({
       "id": editId,
-      "name": $('.studentBox2 .userName').val(),
-      "sex": $('.studentBox2 .sex').val(),
-      "age": $('.studentBox2 .age').val(),
-      "birthday": $('.studentBox2 #birthday').val(),
-      "roots": $('.studentBox2 .roots').val(),
-      "volk": $('.studentBox2 .volk').val(),
-      "code": $('.studentBox2 .code').val(),
-      "idCard": $('.studentBox2 .idCard').val(),
-      "political": $('.studentBox2 .political').val(),
-      "address": $('.studentBox2 .address').val(),
-      "tel": $('.studentBox2 .tele').val(),
-      "email": $('.studentBox2 .email').val(),
-      "parentTel": $('.studentBox2 .parentTel').val(),
-      "parentName1": $('.studentBox2 .parentName1').val(),
-      "parentName2": $('.studentBox2 .parentName2').val(),
       "profession": $('.studentBox2 #professionName2').text(),
       "major": $('.studentBox2 #majorName2').text(),
-      "grade": $('.studentBox2 .grade').val(),
-      "clazz": $('.studentBox2 #className2').text(),
-      "content": ''
+      "num": $('.studentBox2 .num').val(),
+      "name": $('.studentBox2 #className2').text(),
+      "majorId": $('#majorName2').attr('value')
     }),
     success: function (res) {
       layer.msg('修改成功');
@@ -184,35 +146,19 @@ $('.closeStudentBox2').click(function () {
 function getDetail(e) {
   $.ajax({
     type: "get",
-    url: url + "/student/findStudentById",
+    url: url + "/clazz/findClazzById",
     data: {
       "id": e
     },
     success: function (res) {
-      $('.studentBox .userName,.studentBox2 .userName').val(res.name);
-      $('.studentBox .age,.studentBox2 .age').val(res.age);
-      $('.studentBox .sex,.studentBox2 .sex').val(res.sex);
-      $('.studentBox .address,.studentBox2 .address').val(res.address);
-      $('.studentBox .roots,.studentBox2 .roots').val(res.roots);
-      $('.studentBox .birthday').val(res.birthday);
-      $('.studentBox2 #birthday').val(res.birthday)
-      $('.studentBox .idCard,.studentBox2 .idCard').val(res.idCard);
-      $('.studentBox .code,.studentBox2 .code').val(res.code);
-      $('.studentBox .profession').val(res.profession);
-      $('.studentBox2 #professionName2').text(res.profession);
-      $('.studentBox .major').val(res.major);
-      $('.studentBox2 #majorName2').text(res.major);
-      $('.studentBox .grade,.studentBox2 .grade').val(res.grade);
-      $('.studentBox .class').val(res.clazz);
-      $('.studentBox2 #className2').text(res.clazz);
-      $('.studentBox .volk,.studentBox2 .volk').val(res.volk);
-      $('.studentBox .political,.studentBox2 .political').val(res.political);
-      $('.studentBox .tele,.studentBox2 .tele').val(res.tel);
-      $('.studentBox .email,.studentBox2 .email').val(res.email);
-      $('.studentBox .parentName1,.studentBox2 .parentName1').val(res.parentName1);
-      $('.studentBox .parentName2,.studentBox2 .parentName2').val(res.parentName2);
-      $('.studentBox .parentTel,.studentBox2 .parentTel').val(res.parentTel);
-
+      console.log(res)
+      $('.studentBox .profession-name').val(res.professionName);
+      $('.studentBox .major-name').val(res.majorName);
+      $('.studentBox .class-name').val(res.name);
+      $('.studentBox .num,.studentBox2 .num').val(res.num);
+      $('.studentBox2 #professionName2').text(res.professionName);
+      $('.studentBox2 #majorName2').text(res.majorName);
+      $('.studentBox2 #className2').text(res.name);
       for (let i = 0; i < $('.professionBox2').children('div').length; i++) {
         if ($('#professionName2').text() == $('.professionBox2').children('div').eq(i).text()) {
           $('#professionName2').attr('value', $('.professionBox2').children('div').eq(i).attr('value'));
@@ -223,58 +169,28 @@ function getDetail(e) {
   });
 }
 
-// 添加学生
+// 添加班级
 $('.addStudent').click(function () {
   $('.wrrap3').show();
   $('.addMessage').click(function () {
     $.ajax({
       type: "post",
-      url: url + "/student/addStudent",
+      url: url + "/clazz/addClazz",
       dataType: "json",
       contentType: "application/json;charset=UTF-8",
       data: JSON.stringify({
-        "name": $('.studentBox3 .userName').val(),
-        "sex": $('.studentBox3 .sex').val(),
-        "age": $('.studentBox3 .age').val(),
-        "birthday": $('.studentBox3 #birthday2').val(),
-        "roots": $('.studentBox3 .roots').val(),
-        "volk": $('.studentBox3 .volk').val(),
-        "code": $('.studentBox3 .code').val(),
-        "idCard": $('.studentBox3 .idCard').val(),
-        "political": $('.studentBox3 .political').val(),
-        "address": $('.studentBox3 .address').val(),
-        "tel": $('.studentBox3 .tele').val(),
-        "email": $('.studentBox3 .email').val(),
-        "parentTel": $('.studentBox3 .parentTel').val(),
-        "parentName1": $('.studentBox3 .parentName1').val(),
-        "parentName2": $('.studentBox3 .parentName2').val(),
         "profession": $('.studentBox3 #professionName').text(),
         "major": $('.studentBox3 #majorName').text(),
-        "grade": $('.studentBox3 .grade').val(),
-        "clazz": $('.studentBox3 #className').text(),
-        "content": ''
+        "num": $('.studentBox3 .num2').val(),
+        "name": $('.studentBox3 .className').val(),
+        "majorId": $('.studentBox3 #majorName').attr('value')
       }),
       success: function (res) {
         layer.msg('添加成功');
-        $('.studentBox3 .userName').val('');
-        $('.studentBox3 .sex').val('');
-        $('.studentBox3 .age').val('');
-        $('.studentBox3 #birthday2').val('');
-        $('.studentBox3 .roots').val('');
-        $('.studentBox3 .volk').val('');
-        $('.studentBox3 .code').val('');
-        $('.studentBox3 .idCard').val('');
-        $('.studentBox3 .political').val('');
-        $('.studentBox3 .address').val('');
-        $('.studentBox3 .tele').val('');
-        $('.studentBox3 .email').val('');
-        $('.studentBox3 .parentTel').val('');
-        $('.studentBox3 .parentName1').val('');
-        $('.studentBox3 .parentName2').val('');
         $('.studentBox3 #professionName').text('院系');
         $('.studentBox3 #majorName').text('专业');
-        $('.studentBox3 .grade').val('');
-        $('.studentBox3 #className').text('班级');
+        $('.studentBox3 .num2').val('');
+        $('.studentBox3 .className').val('');
         $('.wrrap3').hide();
         $('#studentTable').empty();
         getStudentData();
@@ -284,25 +200,10 @@ $('.addStudent').click(function () {
 });
 
 $('.closeStudentBox3').click(function () {
-  $('.studentBox3 .userName').val('');
-  $('.studentBox3 .sex').val('');
-  $('.studentBox3 .age').val('');
-  $('.studentBox3 .birthday').val('');
-  $('.studentBox3 .roots').val('');
-  $('.studentBox3 .volk').val('');
-  $('.studentBox3 .code').val('');
-  $('.studentBox3 .idCard').val('');
-  $('.studentBox3 .political').val('');
-  $('.studentBox3 .address').val('');
-  $('.studentBox3 .tele').val('');
-  $('.studentBox3 .email').val('');
-  $('.studentBox3 .parentTel').val('');
-  $('.studentBox3 .parentName1').val('');
-  $('.studentBox3 .parentName2').val('');
   $('.studentBox3 #professionName').text('院系');
   $('.studentBox3 .majorName').text('专业');
-  $('.studentBox3 .grade').val('');
-  $('.studentBox3 .className').text('班级');
+  $('.studentBox3 .num2').val('');
+  $('.studentBox3 .className').val('');
   $('.wrrap3').hide();
 });
 
@@ -332,7 +233,7 @@ $('.searchName :input').on('input propertychange', function () {
   getStudentData();
 });
 
-// 获取院系下拉框
+// // 获取院系下拉框
 $.ajax({
   type: "get",
   url: url + "/profession/getProfessionItem",
@@ -347,9 +248,9 @@ $.ajax({
   }
 });
 
-// 获取专业下拉框
+// // 获取专业下拉框
 $('#professionTypeName').bind('DOMNodeInserted', function () {
-  studentObj.profession = $('#professionTypeName').text();
+  studentObj.professionName = $('#professionTypeName').text();
   $('.majorType').empty();
   $('#majorTypeName').text('专业');
   $('#classTypeName').text('班级');
@@ -407,10 +308,10 @@ $('#professionName,#professionName2').bind('DOMNodeInserted', function () {
 // 获取班级下拉框
 $('#majorTypeName').bind('DOMNodeInserted', function () {
   if ($('#majorTypeName').text() == '专业') {
-    studentObj.major = '';
+    studentObj.majorName = '';
     return
   }
-  studentObj.major = $('#majorTypeName').text();
+  studentObj.majorName = $('#majorTypeName').text();
   $('.classType').empty();
   $('#classTypeName').text('班级');
   getStudentData(); // 选取专业更新表格
@@ -460,22 +361,9 @@ $('#majorName,#majorName2').bind('DOMNodeInserted', function () {
 
 $('#classTypeName').bind('DOMNodeInserted', function () {
   if ($('#classTypeName').text() == '班级') {
-    studentObj.clazz = ''
+    studentObj.name = ''
     return
   }
-  studentObj.clazz = $('#classTypeName').text();
+  studentObj.name = $('#classTypeName').text();
   getStudentData(); // 选取班级1更新表格
 });
-
-layui.use('laydate', function () {
-  laydate = layui.laydate;
-  changeDate(birthday);
-  changeDate(birthday2);
-});
-
-function changeDate(id) {
-  laydate.render({
-    elem: id,
-    format: 'yyyy-MM-dd'
-});
-}
