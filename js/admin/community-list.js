@@ -3,13 +3,25 @@ let tableLength; // 分页长度
 let editId;
 let status = true;
 let studentObj = {
-  "majorId": '',
   "name": '',
-  "num": '',
-  "majorName": '',
-  "professionName": '',
+  "info": '',
+  "professionId": '',
   "pageSize": 10,
   "pageNum": numStudent
+}
+
+layui.use('laydate', function () {
+  laydate = layui.laydate;
+  changeDate(registrationTime);
+  changeDate(registrationTime2);
+});
+
+function changeDate(id) {
+  laydate.render({
+    elem: id,
+    type: 'datetime',
+    format: 'yyyy-MM-dd HH:mm:ss'
+  });
 }
 
 // 进入页面获取表格
@@ -18,7 +30,7 @@ getStudentData();
 function getStudentData(first) {
   $.ajax({
     type: "post",
-    url: url + "/clazz/queryClazz",
+    url: url + "/department/queryDepartment",
     dataType: "json",
     contentType: "application/json;charset=UTF-8",
     data: JSON.stringify(studentObj),
@@ -34,16 +46,16 @@ function getStudentData(first) {
           '<div>' + ((index + 1) + (studentObj.pageNum - 1) * 10) + '</div>\n' +
           '</td>\n' +
           '<td>\n' +
-          '<div>' + res.data[index].professionName + '</div>\n' +
-          '</td>\n' +
-          '<td>\n' +
-          '<div>' + res.data[index].majorName + '</div>\n' +
-          '</td>\n' +
-          '<td>\n' +
           '<div>' + res.data[index].name + '</div>\n' +
           '</td>\n' +
           '<td>\n' +
           '<div>' + res.data[index].num + '</div>\n' +
+          '</td>\n' +
+          '<td>\n' +
+          '<div>' + res.data[index].masterName + '</div>\n' +
+          '</td>\n' +
+          '<td>\n' +
+          '<div>' + res.data[index].masterTel + '</div>\n' +
           '</td>\n' +
           '<td>\n' +
           '<div class="operate">\n' +
@@ -81,11 +93,11 @@ function changePage(el) {
   });
 }
 
-// 删除班级
+// 删除社团
 $('body').on('click', '.deleteStudent', function () {
   $.ajax({
     type: "get",
-    url: url + "/clazz/delClazzById",
+    url: url + "/department/delDepartmentById",
     data: {
       "id": $(this).attr('value')
     },
@@ -97,7 +109,7 @@ $('body').on('click', '.deleteStudent', function () {
   });
 });
 
-// 查看班级详细信息
+// 查看社团详细信息
 $('body').on('click', '.checkDetail', function () {
   getDetail($(this).attr('value'));
   $('.wrrap').show();
@@ -107,7 +119,7 @@ $('.closeStudentBox').click(function () {
   $('.wrrap').hide();
 });
 
-// 修改班级信息
+// 修改社团信息
 $('body').on('click', '.editStudent', function () {
   status = false;
   editId = $(this).attr('value');
@@ -118,16 +130,28 @@ $('body').on('click', '.editStudent', function () {
 $('.submitMessage').click(function () {
   $.ajax({
     type: "post",
-    url: url + "/clazz/updateClazzById",
+    url: url + "/department/updateDepartmentById",
     dataType: "json",
     contentType: "application/json;charset=UTF-8",
     data: JSON.stringify({
       "id": editId,
       "profession": $('.studentBox2 #professionName2').text(),
-      "major": $('.studentBox2 #majorName2').text(),
+      "name": $('.studentBox2 .name').val(),
+      "info": $('.studentBox2 .info').val(),
+      "professionId": $('#professionName2').attr('value'),
+      "duty": $('.studentBox2 .duty').val(),
+      "characters": $('.studentBox2 .characters').val(),
+      "masterName": $('.studentBox2 .masterName').val(),
+      "masterTel": $('.studentBox2 .masterTel').val(),
+      "leadOrganize": $('.studentBox2 .leadOrganize').val(),
+      "registrationTime": $('.studentBox2 #registrationTime').val(),
+      "registrationName": $('.studentBox2 .registrationName').val(),
       "num": $('.studentBox2 .num').val(),
-      "name": $('.studentBox2 #className2').text(),
-      "majorId": $('#majorName2').attr('value')
+      "generalRules": $('.studentBox2 .generalRules').val(),
+      "purpose": $('.studentBox2 .purpose').val(),
+      "droit": $('.studentBox2 .droit').val(),
+      "obligation": $('.studentBox2 .obligation').val(),
+      "requirement": $('.studentBox2 .requirement').val(),
     }),
     success: function (res) {
       layer.msg('修改成功');
@@ -146,19 +170,29 @@ $('.closeStudentBox2').click(function () {
 function getDetail(e) {
   $.ajax({
     type: "get",
-    url: url + "/clazz/findClazzById",
+    url: url + "/department/findDepartmentById",
     data: {
       "id": e
     },
     success: function (res) {
-      console.log(res)
       $('.studentBox .profession-name').val(res.professionName);
-      $('.studentBox .major-name').val(res.majorName);
-      $('.studentBox .class-name').val(res.name);
+      $('.studentBox .info,.studentBox2 .info').val(res.info);
+      $('.studentBox .name,.studentBox2 .name').val(res.name);
+      $('.studentBox .duty,.studentBox2 .duty').val(res.duty);
+      $('.studentBox .characters,.studentBox2 .characters').val(res.characters);
+      $('.studentBox .masterName,.studentBox2 .masterName').val(res.masterName);
+      $('.studentBox .masterTel,.studentBox2 .masterTel').val(res.masterTel);
+      $('.studentBox .leadOrganize,.studentBox2 .leadOrganize').val(res.leadOrganize);
+      $('.studentBox .registrationTime,.studentBox2 #registrationTime').val(res.registrationTime);
+      $('.studentBox .updateTime').val(res.updateTime);
+      $('.studentBox .registrationName,.studentBox2 .registrationName').val(res.registrationName);
       $('.studentBox .num,.studentBox2 .num').val(res.num);
+      $('.studentBox .generalRules,.studentBox2 .generalRules').val(res.generalRules);
+      $('.studentBox .purpose,.studentBox2 .purpose').val(res.purpose);
+      $('.studentBox .droit,.studentBox2 .droit').val(res.droit);
+      $('.studentBox .obligation,.studentBox2 .obligation').val(res.obligation);
+      $('.studentBox .requirement,.studentBox2 .requirement').val(res.requirement);
       $('.studentBox2 #professionName2').text(res.professionName);
-      $('.studentBox2 #majorName2').text(res.majorName);
-      $('.studentBox2 #className2').text(res.name);
       for (let i = 0; i < $('.professionBox2').children('div').length; i++) {
         if ($('#professionName2').text() == $('.professionBox2').children('div').eq(i).text()) {
           $('#professionName2').attr('value', $('.professionBox2').children('div').eq(i).attr('value'));
@@ -169,42 +203,77 @@ function getDetail(e) {
   });
 }
 
-// 添加班级
+// 添加社团
 $('.addStudent').click(function () {
   $('.wrrap3').show();
 });
-
 $('.addMessage').click(function () {
   $.ajax({
     type: "post",
-    url: url + "/clazz/addClazz",
+    url: url + "/department/addDepartment",
     dataType: "json",
     contentType: "application/json;charset=UTF-8",
     data: JSON.stringify({
-      "profession": $('.studentBox3 #professionName').text(),
-      "major": $('.studentBox3 #majorName').text(),
-      "num": $('.studentBox3 .num2').val(),
-      "name": $('.studentBox3 .className').val(),
-      "majorId": $('.studentBox3 #majorName').attr('value')
+      "profession": $('.studentBox3 #professionName2').text(),
+      "name": $('.studentBox3 .name').val(),
+      "info": $('.studentBox3 .info').val(),
+      "professionId": $('#professionName').attr('value'),
+      "duty": $('.studentBox3 .duty').val(),
+      "characters": $('.studentBox3 .characters').val(),
+      "masterName": $('.studentBox3 .masterName').val(),
+      "masterTel": $('.studentBox3 .masterTel').val(),
+      "leadOrganize": $('.studentBox3 .leadOrganize').val(),
+      "registrationTime": $('.studentBox3 #registrationTime2').val(),
+      "registrationName": $('.studentBox3 .registrationName').val(),
+      "num": $('.studentBox3 .num').val(),
+      "generalRules": $('.studentBox3 .generalRules').val(),
+      "purpose": $('.studentBox3 .purpose').val(),
+      "droit": $('.studentBox3 .droit').val(),
+      "obligation": $('.studentBox3 .obligation').val(),
+      "requirement": $('.studentBox3 .requirement').val(),
     }),
     success: function (res) {
       layer.msg('添加成功');
       $('.studentBox3 #professionName').text('院系');
-      $('.studentBox3 #majorName').text('专业');
-      $('.studentBox3 .num2').val('');
-      $('.studentBox3 .className').val('');
+      $('.studentBox3 .name').val('');
+      $('.studentBox3 .info').val('');
+      $('.studentBox3 .duty').val(''),
+      $('.studentBox3 .characters').val(''),
+      $('.studentBox3 .masterName').val(''),
+      $('.studentBox3 .masterTel').val(''),
+      $('.studentBox3 .leadOrganize').val(''),
+      $('.studentBox3 #registrationTime2').val(''),
+      $('.studentBox3 .registrationName').val(''),
+      $('.studentBox3 .num').val(''),
+      $('.studentBox3 .generalRules').val(''),
+      $('.studentBox3 .purpose').val(''),
+      $('.studentBox3 .droit').val(''),
+      $('.studentBox3 .obligation').val(''),
+      $('.studentBox3 .requirement').val(''),
       $('.wrrap3').hide();
       $('#studentTable').empty();
       getStudentData();
     }
   });
-});
+})
 
 $('.closeStudentBox3').click(function () {
   $('.studentBox3 #professionName').text('院系');
-  $('.studentBox3 .majorName').text('专业');
-  $('.studentBox3 .num2').val('');
-  $('.studentBox3 .className').val('');
+  $('.studentBox3 .name').val('');
+  $('.studentBox3 .info').val('');
+  $('.studentBox3 .duty').val(''),
+  $('.studentBox3 .characters').val(''),
+  $('.studentBox3 .masterName').val(''),
+  $('.studentBox3 .masterTel').val(''),
+  $('.studentBox3 .leadOrganize').val(''),
+  $('.studentBox3 #registrationTime2').val(''),
+  $('.studentBox3 .registrationName').val(''),
+  $('.studentBox3 .num').val(''),
+  $('.studentBox3 .generalRules').val(''),
+  $('.studentBox3 .purpose').val(''),
+  $('.studentBox3 .droit').val(''),
+  $('.studentBox3 .obligation').val(''),
+  $('.studentBox3 .requirement').val(''),
   $('.wrrap3').hide();
 });
 
@@ -249,122 +318,10 @@ $.ajax({
   }
 });
 
-// // 获取专业下拉框
 $('#professionTypeName').bind('DOMNodeInserted', function () {
-  studentObj.professionName = $('#professionTypeName').text();
+  studentObj.professionId = $('#professionTypeName').attr('value');
   $('.majorType').empty();
   $('#majorTypeName').text('专业');
   $('#classTypeName').text('班级');
   getStudentData(); // 选取院系更新表格
-  $.ajax({
-    type: "get",
-    url: url + "/major/getMajorItem",
-    data: {
-      "id": $(this).attr('value')
-    },
-    success: function (res) {
-      var data = '';
-      for (let index = 0; index < res.length; index++) {
-        data += '<div value=" ' + res[index].id + ' ">' + res[index].name + '</div>\n'
-      }
-      $('.majorType').append(data);
-    }
-  });
-});
-$('#professionName,#professionName2').bind('DOMNodeInserted', function () {
-  if (!$(this).attr('value')) {
-    return
-  }
-  $('.majorBox').empty();
-  $('.majorBox2').empty();
-  $('#majorName').text('专业');
-  $('#className').text('班级');
-  if (status == true) {
-    $('#majorName2').text('专业');
-    $('#className2').text('班级');
-  }
-  $.ajax({
-    type: "get",
-    url: url + "/major/getMajorItem",
-    data: {
-      "id": $(this).attr('value')
-    },
-    success: function (res) {
-      var data = '';
-      for (let index = 0; index < res.length; index++) {
-        data += '<div value=" ' + res[index].id + ' ">' + res[index].name + '</div>\n'
-      }
-      $('.majorBox').append(data);
-      $('.majorBox2').append(data);
-      for (let i = 0; i < $('.majorBox2').children('div').length; i++) {
-        if ($('#majorName2').text() == $('.majorBox2').children('div').eq(i).text()) {
-          $('#majorName2').attr('value', $('.majorBox2').children('div').eq(i).attr('value'));
-          $('#majorName2').text($('.majorBox2').children('div').eq(i).text())
-        }
-      }
-    }
-  });
-});
-
-// 获取班级下拉框
-$('#majorTypeName').bind('DOMNodeInserted', function () {
-  if ($('#majorTypeName').text() == '专业') {
-    studentObj.majorName = '';
-    return
-  }
-  studentObj.majorName = $('#majorTypeName').text();
-  $('.classType').empty();
-  $('#classTypeName').text('班级');
-  getStudentData(); // 选取专业更新表格
-  $.ajax({
-    type: "get",
-    url: url + "/clazz/getClazzItem",
-    data: {
-      "id": $('#majorTypeName').attr('value')
-    },
-    success: function (res) {
-      var data = '';
-      for (let index = 0; index < res.length; index++) {
-        data += '<div value=" ' + res[index].id + ' ">' + res[index].name + '</div>\n'
-      }
-      $('.classType').append(data);
-    }
-  });
-});
-
-$('#majorName,#majorName2').bind('DOMNodeInserted', function () {
-  if ($(this).text() == '专业' || !$(this).attr('value')) {
-    return
-  }
-  $('.classBox').empty();
-  $('#className').text('班级');
-  if (status == true) {
-    $('#className2').text('班级');
-  }
-  $('.classBox2').empty();
-  $.ajax({
-    type: "get",
-    url: url + "/clazz/getClazzItem",
-    data: {
-      "id": $(this).attr('value')
-    },
-    success: function (res) {
-      var data = '';
-      for (let index = 0; index < res.length; index++) {
-        data += '<div value=" ' + res[index].id + ' ">' + res[index].name + '</div>\n'
-      }
-      $('.classBox').append(data);
-      $('.classBox2').append(data);
-      status = true
-    }
-  });
-});
-
-$('#classTypeName').bind('DOMNodeInserted', function () {
-  if ($('#classTypeName').text() == '班级') {
-    studentObj.name = ''
-    return
-  }
-  studentObj.name = $('#classTypeName').text();
-  getStudentData(); // 选取班级1更新表格
 });

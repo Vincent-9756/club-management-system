@@ -38,7 +38,9 @@ layui.use(['element', 'layer'], function () {
       event.returnValue = false;
     }
     $('.contentShow').hide();
-    $('#changeIframes').attr('src', elem[0].href);
+    if (elem[0].href.split('html/')[1] != '' && elem[0].href.split('html/')[1] != 'null' && elem[0].href.split('html/')[1] != null) {
+      $('#changeIframes').attr('src', elem[0].href);
+    }
     $('#iframeBox').css('height', '100%');
   });
 
@@ -90,7 +92,7 @@ $.ajax({
   success: function (res) {
     var data = ''
     for (let i = 0; i < res.length; i++) {
-      data += '<li class="layui-nav-item"><a href="javascript:;"><i class="layui-icon ' + res[i].icon + '"></i>' + res[i].title + '</a>';
+      data += '<li class="layui-nav-item"><a href="' + res[i].jump + '"><i class="layui-icon ' + res[i].icon + '"></i>' + res[i].title + '</a>';
       // console.log(res[i])
       if (res[i].list.length != 0) {
         for (let e = 0; e < res[i].list.length; e++) {

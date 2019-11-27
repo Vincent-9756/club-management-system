@@ -50,28 +50,29 @@ $('.m-product-panel-list li').hover(function () {
 // 添加院系
 $('#add-faculty').click(function () {
   $('.add-facultyBox').show();
-  $('#add-facultyToService').click(function () {
-    $.ajax({
-      type: "post",
-      url: url + "/profession/addProfession",
-      dataType: "json",
-      contentType: "application/json;charset=UTF-8",
-      data: JSON.stringify({
-        "name": $('#addName').val(),
-        "code": $('#addCode').val(),
-        "description": $('#addDescription').val()
-      }),
-      success: function (res) {
-        layer.msg('添加成功');
-        $('.add-facultyBox').hide();
-        $('#addName').val('');
-        $('#addCode').val('');
-        $('#addDescription').val('');
-        $('.m-product-panel-list').empty();
-        queryFaculty();
-      }
-    });
-  })
+});
+
+$('#add-facultyToService').click(function () {
+  $.ajax({
+    type: "post",
+    url: url + "/profession/addProfession",
+    dataType: "json",
+    contentType: "application/json;charset=UTF-8",
+    data: JSON.stringify({
+      "name": $('#addName').val(),
+      "code": $('#addCode').val(),
+      "description": $('#addDescription').val()
+    }),
+    success: function (res) {
+      layer.msg('添加成功');
+      $('.add-facultyBox').hide();
+      $('#addName').val('');
+      $('#addCode').val('');
+      $('#addDescription').val('');
+      $('.m-product-panel-list').empty();
+      queryFaculty();
+    }
+  });
 });
 
 // 删除院系

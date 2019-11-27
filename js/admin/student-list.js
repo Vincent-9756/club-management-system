@@ -226,61 +226,62 @@ function getDetail(e) {
 // 添加学生
 $('.addStudent').click(function () {
   $('.wrrap3').show();
-  $('.addMessage').click(function () {
-    $.ajax({
-      type: "post",
-      url: url + "/student/addStudent",
-      dataType: "json",
-      contentType: "application/json;charset=UTF-8",
-      data: JSON.stringify({
-        "name": $('.studentBox3 .userName').val(),
-        "sex": $('.studentBox3 .sex').val(),
-        "age": $('.studentBox3 .age').val(),
-        "birthday": $('.studentBox3 #birthday2').val(),
-        "roots": $('.studentBox3 .roots').val(),
-        "volk": $('.studentBox3 .volk').val(),
-        "code": $('.studentBox3 .code').val(),
-        "idCard": $('.studentBox3 .idCard').val(),
-        "political": $('.studentBox3 .political').val(),
-        "address": $('.studentBox3 .address').val(),
-        "tel": $('.studentBox3 .tele').val(),
-        "email": $('.studentBox3 .email').val(),
-        "parentTel": $('.studentBox3 .parentTel').val(),
-        "parentName1": $('.studentBox3 .parentName1').val(),
-        "parentName2": $('.studentBox3 .parentName2').val(),
-        "profession": $('.studentBox3 #professionName').text(),
-        "major": $('.studentBox3 #majorName').text(),
-        "grade": $('.studentBox3 .grade').val(),
-        "clazz": $('.studentBox3 #className').text(),
-        "content": ''
-      }),
-      success: function (res) {
-        layer.msg('添加成功');
-        $('.studentBox3 .userName').val('');
-        $('.studentBox3 .sex').val('');
-        $('.studentBox3 .age').val('');
-        $('.studentBox3 #birthday2').val('');
-        $('.studentBox3 .roots').val('');
-        $('.studentBox3 .volk').val('');
-        $('.studentBox3 .code').val('');
-        $('.studentBox3 .idCard').val('');
-        $('.studentBox3 .political').val('');
-        $('.studentBox3 .address').val('');
-        $('.studentBox3 .tele').val('');
-        $('.studentBox3 .email').val('');
-        $('.studentBox3 .parentTel').val('');
-        $('.studentBox3 .parentName1').val('');
-        $('.studentBox3 .parentName2').val('');
-        $('.studentBox3 #professionName').text('院系');
-        $('.studentBox3 #majorName').text('专业');
-        $('.studentBox3 .grade').val('');
-        $('.studentBox3 #className').text('班级');
-        $('.wrrap3').hide();
-        $('#studentTable').empty();
-        getStudentData();
-      }
-    });
-  })
+});
+
+$('.addMessage').click(function () {
+  $.ajax({
+    type: "post",
+    url: url + "/student/addStudent",
+    dataType: "json",
+    contentType: "application/json;charset=UTF-8",
+    data: JSON.stringify({
+      "name": $('.studentBox3 .userName').val(),
+      "sex": $('.studentBox3 .sex').val(),
+      "age": $('.studentBox3 .age').val(),
+      "birthday": $('.studentBox3 #birthday2').val(),
+      "roots": $('.studentBox3 .roots').val(),
+      "volk": $('.studentBox3 .volk').val(),
+      "code": $('.studentBox3 .code').val(),
+      "idCard": $('.studentBox3 .idCard').val(),
+      "political": $('.studentBox3 .political').val(),
+      "address": $('.studentBox3 .address').val(),
+      "tel": $('.studentBox3 .tele').val(),
+      "email": $('.studentBox3 .email').val(),
+      "parentTel": $('.studentBox3 .parentTel').val(),
+      "parentName1": $('.studentBox3 .parentName1').val(),
+      "parentName2": $('.studentBox3 .parentName2').val(),
+      "profession": $('.studentBox3 #professionName').text(),
+      "major": $('.studentBox3 #majorName').text(),
+      "grade": $('.studentBox3 .grade').val(),
+      "clazz": $('.studentBox3 #className').text(),
+      "content": ''
+    }),
+    success: function (res) {
+      layer.msg('添加成功');
+      $('.studentBox3 .userName').val('');
+      $('.studentBox3 .sex').val('');
+      $('.studentBox3 .age').val('');
+      $('.studentBox3 #birthday2').val('');
+      $('.studentBox3 .roots').val('');
+      $('.studentBox3 .volk').val('');
+      $('.studentBox3 .code').val('');
+      $('.studentBox3 .idCard').val('');
+      $('.studentBox3 .political').val('');
+      $('.studentBox3 .address').val('');
+      $('.studentBox3 .tele').val('');
+      $('.studentBox3 .email').val('');
+      $('.studentBox3 .parentTel').val('');
+      $('.studentBox3 .parentName1').val('');
+      $('.studentBox3 .parentName2').val('');
+      $('.studentBox3 #professionName').text('院系');
+      $('.studentBox3 #majorName').text('专业');
+      $('.studentBox3 .grade').val('');
+      $('.studentBox3 #className').text('班级');
+      $('.wrrap3').hide();
+      $('#studentTable').empty();
+      getStudentData();
+    }
+  });
 });
 
 $('.closeStudentBox3').click(function () {
@@ -477,5 +478,5 @@ function changeDate(id) {
   laydate.render({
     elem: id,
     format: 'yyyy-MM-dd'
-});
+  });
 }

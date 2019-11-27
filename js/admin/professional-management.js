@@ -165,29 +165,30 @@ function getDetail(e) {
 // 添加专业
 $('.addStudent').click(function () {
   $('.wrrap3').show();
-  $('.addMessage').click(function () {
-    $.ajax({
-      type: "post",
-      url: url + "/major/addMajor",
-      dataType: "json",
-      contentType: "application/json;charset=UTF-8",
-      data: JSON.stringify({
-        "profession": $('.studentBox3 #professionName').text(),
-        "num": $('.studentBox3 .num2').val(),
-        "name": $('.studentBox3 .majorName').val(),
-        "professionId": $('.studentBox3 #professionName').attr('value')
-      }),
-      success: function (res) {
-        layer.msg('添加成功');
-        $('.studentBox3 #professionName').text('院系');
-        $('.studentBox3 .num2').val('');
-        $('.studentBox3 .majorName').val('');
-        $('.wrrap3').hide();
-        $('#studentTable').empty();
-        getStudentData();
-      }
-    });
-  })
+});
+
+$('.addMessage').click(function () {
+  $.ajax({
+    type: "post",
+    url: url + "/major/addMajor",
+    dataType: "json",
+    contentType: "application/json;charset=UTF-8",
+    data: JSON.stringify({
+      "profession": $('.studentBox3 #professionName').text(),
+      "num": $('.studentBox3 .num2').val(),
+      "name": $('.studentBox3 .majorName').val(),
+      "professionId": $('.studentBox3 #professionName').attr('value')
+    }),
+    success: function (res) {
+      layer.msg('添加成功');
+      $('.studentBox3 #professionName').text('院系');
+      $('.studentBox3 .num2').val('');
+      $('.studentBox3 .majorName').val('');
+      $('.wrrap3').hide();
+      $('#studentTable').empty();
+      getStudentData();
+    }
+  });
 });
 
 $('.closeStudentBox3').click(function () {
