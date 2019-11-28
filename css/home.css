@@ -60,9 +60,9 @@
   background-color: #243346;
   color: #fff;
   position: relative;
-  height: 49px;
+  height: 60px;
   width: 220px;
-  line-height: 49px;
+  line-height: 60px;
   cursor: pointer;
 }
 
@@ -71,7 +71,7 @@
   height: 40px;
   position: absolute;
   left: 10px;
-  top: 5px;
+  top: 10px;
 }
 
 .layui-nav {

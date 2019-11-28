@@ -35,7 +35,6 @@ function getStudentData(first) {
     contentType: "application/json;charset=UTF-8",
     data: JSON.stringify(studentObj),
     success: function (res) {
-      console.log(res)
       tableLength = res.total
       if (!first) {
         changePage(pagetion);
@@ -163,7 +162,6 @@ function getDetail(e) {
       "id": e
     },
     success: function (res) {
-      console.log(res)
       $('.studentBox .tittle,.studentBox2 .tittle').val(res.tittle);
       $('.studentBox .content,.studentBox2 .content').val(res.content);
       $('.studentBox .signature,.studentBox2 .signature').val(res.signature);

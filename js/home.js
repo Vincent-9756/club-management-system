@@ -1,3 +1,16 @@
+// 登录半小时后退出系统
+setTimeout(() => {
+  $.ajax({
+    type: "get",
+    url: url + "/user/logout",
+    success: function (res) {
+      setTimeout(() => {
+        window.location.href = '../html/login.html'
+      }, 2000);
+    }
+  });
+}, 1800000);
+
 $('#home .userName').html('<img src="http://t.cn/RCzsdCq" class="layui-nav-img">' + getCookie('username'))
 if ($('#changeIframes').attr('src') == '') {
   $('.contentShow').show();
