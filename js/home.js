@@ -4,9 +4,7 @@ setTimeout(() => {
     type: "get",
     url: url + "/user/logout",
     success: function (res) {
-      setTimeout(() => {
-        window.location.href = '../html/login.html'
-      }, 2000);
+      window.location.href = '../html/login.html'
     }
   });
 }, 1800000);
