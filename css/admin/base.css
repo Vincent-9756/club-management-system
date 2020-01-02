@@ -115,3 +115,6 @@ b.layui-btn.mini.look{
     line-height: 1.5em;
     background-color: #49ccdd;
 }
+ul, li {
+    list-style: none;
+}

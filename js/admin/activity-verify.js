@@ -17,7 +17,8 @@ $(function () {
 			contentType: "application/json;charset=UTF-8",
 			data: JSON.stringify({
 				pageNum: 1,
-				pageSize: 5,
+                pageSize: 5,
+                status: "APPLYING"
 			}),
 			xhrFields: {
 				withCredentials: true
@@ -44,7 +45,8 @@ $(function () {
 						contentType: "application/json;charset=UTF-8",
 						data: JSON.stringify({
 							pageNum: obj.curr,
-							pageSize: obj.limit,
+                            pageSize: obj.limit,
+                            status: "APPLYING",
 						}),
 						xhrFields: {
 							withCredentials: true
@@ -53,7 +55,7 @@ $(function () {
 						success: function (data) {
 							$("#SchemeDemo").empty();
 							for (var i = 0; i < obj.limit; i++) {
-								if(data.count < 1){
+                                if(data.count < 1){
                                     $("#Schemepage").hide();
                                     return ;
                                 }
@@ -97,9 +99,12 @@ $(function () {
 									'</div>' +
 									'<div class="result_new_operaRight result_new_operaItem">' +
 									'<ul class="clear">' +
-									'<li><b class="layui-btn mini look" id="look" value="' + item.id + '" onclick="see(' + item.id + ')">&nbsp;查看&nbsp;</b>' +
+									'<li><b class="layui-btn mini come" id="come" value="' + item.id + '" onclick="see(' + item.id + ')">&nbsp;查看&nbsp;</b>' +
+                                    '</li>' +
+                                    '<li><b class="layui-btn mini open" id="open" value="' + item.id + '" onclick="auditing(' + item.id + ', \'ENABLED\')">&nbsp;通过&nbsp;</b>' +
+                                    '</li>' +
+                                    '<li><b class="layui-btn mini close" id="close" value="' + item.id + '" onclick="auditing(' + item.id + ', \'DISAPPLY\')">&nbsp;驳回&nbsp;</b>' +
 									'</li>' +
-									'<li></li>' +
 									'</ul>' +
 									'</div>' +
 									'</div>' +
@@ -110,8 +115,36 @@ $(function () {
 				}
 			});
 		});
-	}
+    }
+    
+    //查看详情
 	see = function (id) {
 		window.open('../../html/admin/activity.html?id='+id+'');
-	}
+    }
+    
+    //审批
+    auditing = function (id, status) {
+		$.ajax({
+			url: url + '/scheme/updateSchemeById',
+			type: 'post',
+			contentType: "application/json;charset=UTF-8",
+			data: JSON.stringify({
+				id: id,
+                status: status
+			}),
+			xhrFields: {
+				withCredentials: true
+			},
+			dataType: 'json',
+			success: function (data) {
+				if(data > 0) {
+                    alert("1");
+                }else {
+                    alert("网络错误，请重试！")
+                }
+                intiContent();
+			}
+		});
+    }
+
 });
