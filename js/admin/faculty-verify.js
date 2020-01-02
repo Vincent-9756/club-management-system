@@ -12,7 +12,7 @@ $(function () {
 
 	var intiContent = function () {
 		$.ajax({
-			url: url + '/scheme/queryScheme',
+			url: url + '/department/queryDepartment',
 			type: 'post',
 			contentType: "application/json;charset=UTF-8",
 			data: JSON.stringify({
@@ -40,7 +40,7 @@ $(function () {
 				limit: 5,
 				jump: function (obj, first) {
 					$.ajax({
-						url: url + '/scheme/queryScheme',
+						url: url + '/department/queryDepartment',
 						type: 'post',
 						contentType: "application/json;charset=UTF-8",
 						data: JSON.stringify({
@@ -62,31 +62,31 @@ $(function () {
 								if (i >= data.data.length) {
 									return;
 								}
-								item = data.data[i];
+                item = data.data[i];
+                console.log(item)
 								$("#SchemeDemo").append('<div class="ResultCont" style="margin-top: 10px;padding-bottom: 10px;margin-bottom: 10px;">' +
 									'<div class="title">' +
-									'<a target="_blank"><em>' + item.departmentName + ':</em>' + item.name + '</a>' +
+									'<a target="_blank"><em>' + item.professionName + ':</em>' + item.name + '</a>' +
 									checkState(item.status) +
 									'</div>' +
 									'<div class="ResultMoreinfo">' +
 									'<div class="author">' +
-									'<span class="resultResouceType">' + item.creatorName + '</span>' +
-									'<a>活动主题：' + item.theme + '</a>' +
+									'<a>领导组织：' + item.leadOrganize + '</a>' +
 									'</div>' +
 									'<div class="Volume">' +
-									'<a>&nbsp;&nbsp;&nbsp;活动形式' + item.form + '</a>' +
+									'<a>&nbsp;&nbsp;&nbsp;创始人：' + item.registrationName + '</a>' +
 									'</div>' +
 									'</div>' +
 									'<div class="summary">' +
-									'<em>摘要</em>：' + item.content + '' +
+									'<em>摘要</em>：' + item.info + '' +
 									'</div>' +
 									'<div class="Keyword">' +
 									'<a><span><em>创建时间</em>：</span><span>' + item.createTime + '</span></a>' +
-									'<a><span><em>开始时间</em>：</span><span>' + item.beginTime + '</span></a>' +
+									'<a><span><em>成立时间</em>：</span><span>' + item.registrationTime + '</span></a>' +
 									'</div>' +
 									'<div class="Keyword">' +
-									'<a><span><em>活动对象</em>：</span><span>' + item.person + '</span></a>' +
-									'<a><span><em>活动地点</em>：</span><span>' + item.place + '</span></a>' +
+									'<a><span><em>负责人姓名</em>：</span><span>' + item.masterName + '</span></a>' +
+									'<a><span><em>负责人电话</em>：</span><span>' + item.masterTel + '</span></a>' +
 									'</div>' +
 									'<div class="result_new_operaWrap clear">' +
 									'<div class="result_new_operaLeft result_new_operaItem">' +
@@ -119,13 +119,47 @@ $(function () {
 
 	//查看详情
 	see = function (id) {
-		window.open('../../html/admin/activity.html?id=' + id + '');
-	}
+		getDetail(id);
+    $('.wrrap').show();
+  }
+
+  $('.closeStudentBox').click(function () {
+    $('.wrrap').hide();
+  });
+
+  function getDetail(e) {
+    $.ajax({
+      type: "get",
+      url: url + "/department/findDepartmentById",
+      data: {
+        "id": e
+      },
+      success: function (res) {
+        $('.studentBox .profession-name').val(res.professionName);
+        $('.studentBox .info').val(res.info);
+        $('.studentBox .name').val(res.name);
+        $('.studentBox .duty').val(res.duty);
+        $('.studentBox .characters').val(res.characters);
+        $('.studentBox .masterName').val(res.masterName);
+        $('.studentBox .masterTel').val(res.masterTel);
+        $('.studentBox .leadOrganize').val(res.leadOrganize);
+        $('.studentBox .registrationTime').val(res.registrationTime);
+        $('.studentBox .updateTime').val(res.updateTime);
+        $('.studentBox .registrationName').val(res.registrationName);
+        $('.studentBox .num').val(res.num);
+        $('.studentBox .generalRules').val(res.generalRules);
+        $('.studentBox .purpose').val(res.purpose);
+        $('.studentBox .droit').val(res.droit);
+        $('.studentBox .obligation').val(res.obligation);
+        $('.studentBox .requirement').val(res.requirement);
+      }
+    });
+  }
 
 	//审批
 	auditing = function (id, status) {
 		$.ajax({
-			url: url + '/scheme/updateSchemeById',
+			url: url + '/department/updateDepartmentById',
 			type: 'post',
 			contentType: "application/json;charset=UTF-8",
 			data: JSON.stringify({

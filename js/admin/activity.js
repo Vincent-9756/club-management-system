@@ -25,7 +25,7 @@ $(function () {
   intiPage = function (data) {
     $("#page1").empty();
     $("#page1").append(
-      '<div align="center"><img alt="" src="../images/school.png">' +
+      '<div align="center">' +
       //				'	<p class="title">福建工程学院国脉信息学院</p>'+
       '	<p class="title">' + data.name + '</p>' +
       '	<p><span class="BigFont">策</span></p>' +
