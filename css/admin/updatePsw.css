@@ -1,0 +1,86 @@
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+button {
+  background: #1aa094 !important;
+}
+
+#updatePsw {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.pswBox {
+  width: 600px;
+  height: 400px;
+  border: 1px solid #ddd;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 5px;
+  box-shadow: 10px 10px 20px 10px rgb(168, 234, 235), -10px 10px 10px 10px rgba(255, 255, 255, 0.5);
+}
+
+.title {
+  text-align: center;
+  height: 50px;
+  line-height: 50px;
+  font-size: 20px;
+  color: #00BCD4;
+  margin-top: 10px;
+}
+
+.layui-form {
+  margin-top: 20px;
+  padding: 0 20px;
+}
+
+input {
+  width: 80%;
+  height: 40px;
+  line-height: 40px;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 4px;
+  border: 1px solid #DCDFE6 !important;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  color: #606266;
+  display: inline-block;
+  font-size: 14px;
+}
+
+.layui-form-label {
+  padding: 20px 0 0 0;
+  height: 42px;
+  line-height: 42px;
+}
+
+.layui-form-label span {
+  color: red;
+}
+
+.layui-input-block input:focus {
+  border: 1px solid #03abf4fa !important;
+}
+
+.submitMsg {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+}
