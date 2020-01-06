@@ -13,7 +13,6 @@ let studentObj = {
 layui.use('laydate', function () {
   laydate = layui.laydate;
   changeDate(registrationTime);
-  changeDate(registrationTime2);
 });
 
 function changeDate(id) {
