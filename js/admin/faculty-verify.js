@@ -78,11 +78,10 @@ $(function () {
 									'</div>' +
 									'</div>' +
 									'<div class="summary">' +
-									'<em>摘要</em>：' + item.info + '' +
+									'<em>部门信息</em>：' + item.info + '' +
 									'</div>' +
-									'<div class="Keyword">' +
-									'<a><span><em>创建时间</em>：</span><span>' + item.createTime + '</span></a>' +
-									'<a><span><em>成立时间</em>：</span><span>' + item.registrationTime + '</span></a>' +
+									'<div class="summary">' +
+									'<a><span><em>义务</em>：</span><span>' + item.duty + '</span></a>' +
 									'</div>' +
 									'<div class="Keyword">' +
 									'<a><span><em>负责人姓名</em>：</span><span>' + item.masterName + '</span></a>' +
