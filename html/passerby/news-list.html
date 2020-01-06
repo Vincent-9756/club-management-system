@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>校园社团管理系统</title>
+  <link rel="stylesheet" href="../../layui/css/layui.css" media="all">
+  <link rel="stylesheet" href="../../css/common.css">
+  <link rel="stylesheet" href="../../css/admin/news-list.css">
+</head>
+
+<body>
+  <div id="studentContainer">
+    <div class="layui-form">
+      <table class="layui-table">
+        <thead>
+          <tr>
+            <th>序号</th>
+            <th>标题</th>
+            <th>内容</th>
+            <th>签名/发布人</th>
+            <th>创建时间</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody id="studentTable">
+        </tbody>
+      </table>
+      <div id="pagetion"></div>
+    </div>
+    <div class="wrrap">
+      <div class="studentBox">
+        <div class="student-header">
+          <span>社团信息</span>
+          <span class="closeStudentBox">x</span>
+        </div>
+        <div class="student-body">
+          <form class="layui-form" action="" lay-filter="example">
+            <div class="layui-form-item">
+              <label class="layui-form-label">标题:</label>
+              <div class="layui-input-block">
+                <input class="layui-input tittle" type="text" name="username" lay-verify="title" autocomplete="off"
+                  readonly>
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">内容:</label>
+              <div class="layui-input-block">
+                <input class="layui-input content" type="text" name="username" lay-verify="title" autocomplete="off"
+                  readonly>
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">签名/发布人:</label>
+              <div class="layui-input-block">
+                <input class="layui-input signature" type="text" name="username" lay-verify="title" autocomplete="off"
+                  readonly>
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">创建时间:</label>
+              <div class="layui-input-block">
+                <input class="layui-input createTime" type="text" name="username" lay-verify="title" autocomplete="off"
+                  readonly>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../../js/jquery-3.4.1.min.js"></script>
+  <script src="../../layui/layui.js"></script>
+  <script src="../../js/api.js"></script>
+  <script src="../../js/passerby/news-list.js"></script>
+</body>
+
+</html>

@@ -25,7 +25,6 @@ body::-webkit-scrollbar {
 
 .studentBox {
   width: 50%;
-  height: 650px;
   background: #FFF;
   position: relative;
   margin: 0 auto 50px;
