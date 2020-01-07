@@ -1,0 +1,77 @@
+body {
+  overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+button {
+  background: #1aa094!important;
+  border-color: #1aa094!important;
+}
+
+#newCommunityContainer {
+  padding: 50px 20px 20px 20px;
+}
+
+.f-push {
+  width: 205px;
+  height: 38px;
+  line-height: 38px;
+  text-indent: 14px;
+  position: relative;
+  border: 1px solid #e6e6e6;
+}
+
+.f-push>p {
+  display: block;
+  text-align: left;
+  font-size: 16px;
+  cursor: pointer;
+  line-height: 38px;
+  min-width: 120px;
+  overflow: hidden;
+  border-radius: 3px;
+  height: 38px;
+  padding-right: 30px;
+}
+
+.f-push>p:after {
+  content: '';
+  background: url('../../images/down.png');
+  position: absolute;
+  right: 15px;
+  top: 14px;
+  text-indent: 0;
+  width: 21px;
+  height: 11px;
+}
+
+.f-push>div {
+  width: 205px;
+  position: absolute;
+  z-index: 66666666;
+  background: #1aa094;
+  color: #fff;
+  opacity: 0.9;
+  display: none;
+}
+
+.f-push>div>div {
+  height: 38px;
+  padding-right: 10px;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.f-push>div>div:hover {
+  background: #00bcd4;
+  transition: .25s;
+}
+
+.marker>p:after {
+  background: url('../../images/up.png') !important;
+}

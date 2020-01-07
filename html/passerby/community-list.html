@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>校园社团管理系统</title>
+  <link rel="stylesheet" href="../../layui/css/layui.css" media="all">
+	<link rel="stylesheet" type="text/css" href="../../css/admin/meetingList.css"/>
+  <link rel="stylesheet" type="text/css" href="../../css/admin/base.css"/>
+  <link rel="stylesheet" href="../../css/admin/faculty-verify.css">
+</head>
+<body>
+	<div style="width: 80%; padding: 20px; margin-left: 10%;">
+		<div class="ResultBlock" style="clear: both;">
+			<div id="SchemeDemo" class="ResultList">
+			</div>
+			<div id="Schemepage" style="margin-top: 5px; padding-left: 24px;"></div>
+    </div>
+    <div class="wrrap">
+      <div class="studentBox">
+        <div class="student-header">
+          <span>社团信息</span>
+          <span class="closeStudentBox">x</span>
+        </div>
+        <div class="student-body">
+          <form class="layui-form" action="" lay-filter="example">
+            <div class="layui-form-item">
+              <label class="layui-form-label">院系:</label>
+              <div class="layui-input-block">
+                <input class="layui-input profession-name" type="text" name="username" lay-verify="title"
+                  autocomplete="off" readonly>
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">社团名称:</label>
+              <div class="layui-input-block">
+                <input class="layui-input name" type="text" name="username" lay-verify="title" autocomplete="off"
+                  readonly>
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">社团信息:</label>
+              <div class="layui-input-block">
+                <textarea class="info" name="" id="" cols="30" rows="10" style="padding: 20px;" readonly></textarea>
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">人数:</label>
+              <div class="layui-input-block">
+                <input class="layui-input num" type="text" name="username" lay-verify="title" autocomplete="off"
+                  readonly>
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">社团职责:</label>
+              <div class="layui-input-block">
+                <textarea class="duty" name="" id="" cols="30" rows="10" readonly></textarea>
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">社团性质:</label>
+              <div class="layui-input-block">
+                <input class="layui-input characters" type="text" name="username" lay-verify="title" autocomplete="off"
+                  readonly>
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">负责人姓名:</label>
+              <div class="layui-input-block">
+                <input class="layui-input masterName" type="text" name="username" lay-verify="title" autocomplete="off"
+                  readonly>
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">负责人电话:</label>
+              <div class="layui-input-block">
+                <input class="layui-input masterTel" type="text" name="username" lay-verify="title" autocomplete="off"
+                  readonly>
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">领导组织:</label>
+              <div class="layui-input-block">
+                <input class="layui-input leadOrganize" type="text" name="username" lay-verify="title"
+                  autocomplete="off" readonly>
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">成立时间:</label>
+              <div class="layui-input-block">
+                <input class="layui-input registrationTime" type="text" name="username" lay-verify="title"
+                  autocomplete="off" readonly>
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">修改时间:</label>
+              <div class="layui-input-block">
+                <input class="layui-input updateTime" type="text" name="username" lay-verify="title" autocomplete="off"
+                  readonly>
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">创始人:</label>
+              <div class="layui-input-block">
+                <input class="layui-input registrationName" type="text" name="username" lay-verify="title"
+                  autocomplete="off" readonly>
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">总则:</label>
+              <div class="layui-input-block">
+                <textarea class="generalRules" name="" id="" cols="30" rows="10" readonly></textarea>
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">宗旨:</label>
+              <div class="layui-input-block">
+                <textarea class="purpose" name="" id="" cols="30" rows="10" readonly></textarea>
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">权利:</label>
+              <div class="layui-input-block">
+                <textarea class="droit" name="" id="" cols="30" rows="10" readonly></textarea>
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">义务:</label>
+              <div class="layui-input-block">
+                <textarea class="obligation" name="" id="" cols="30" rows="10" readonly></textarea>
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">要求:</label>
+              <div class="layui-input-block">
+                <textarea class="requirement" name="" id="" cols="30" rows="10" readonly></textarea>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+	</div>
+
+	<script src="../../js/jquery-3.4.1.min.js"></script>
+	<script src="../../layui/layui.js"></script>
+	<script src="../../js/api.js"></script>
+	<script src="../../js/passerby/community-list.js"></script>
+</body>
+</html>
