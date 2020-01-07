@@ -173,7 +173,7 @@ $(function () {
 				layui.use('layer', function () {
 					var layer = layui.layer;
 					if (data > 0) {
-						layer.msg("审核通过!");
+						layer.msg("操作成功!");
 					} else {
 						layer.msg("网络错误，请重试！")
 					}

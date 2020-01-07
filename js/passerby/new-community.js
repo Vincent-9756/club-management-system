@@ -11,7 +11,7 @@ layui.use(['form', 'layer', 'laydate'], function(){
 
   //监听提交
   form.on('submit(demo1)', function(data){
-    console.log(data)
+    console.log(JSON.stringify(data.field))
     $.ajax({
       type: "post",
       url: url + "/department/addDepartment",
@@ -23,7 +23,11 @@ layui.use(['form', 'layer', 'laydate'], function(){
         layer.msg('添加成功');
       }
     });
+    $("#form")[0].reset();
+    form.render();
+    return false;
   });
+
 });
 
 // 下拉框函数

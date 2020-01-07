@@ -86,22 +86,22 @@ $(function () {
 									'</div>' +
 									'<div class="result_new_operaRight result_new_operaItem">' +
 									'<ul class="clear">' +
-									'<li><b class="layui-btn mini come" id="come" value="' + item.id + '" onclick="see(' + item.id + ')">&nbsp;查看&nbsp;</b>' +
+									'<li><b class="layui-btn mini come" id="come' + item.id + '" value="' + item.id + '" onclick="see(' + item.id + ')">&nbsp;查看&nbsp;</b>' +
 									'</li>' +
 									// '<li><b class="layui-btn mini open" id="open" value="' + item.id + '" onclick="auditing(' + item.id + ')">&nbsp;申请加入&nbsp;</b>' +
 									// '</li>' +
-									'<li><b class="layui-btn mini open" id="open" value="' + item.id + '">&nbsp;申请加入&nbsp;</b>' +
+									'<li><b class="layui-btn mini open" id="open' + item.id + '" value="' + item.id + '">&nbsp;申请加入&nbsp;</b>' +
 									'</li>' +
 									'</ul>' +
 									'</div>' +
 									'</div>' +
 									'</div>');
 								if (item.status == 'ENABLED') {
-									$('.open').css({
+									$('#open' + item.id).css({
 										'background-color': 'gray',
 										'pointer-events': 'none'
 									});
-									$('.open').parent().css({
+									$('#open' + item.id).parent().css({
 										'cursor': 'not-allowed'
 									});
 								}

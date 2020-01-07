@@ -16,35 +16,35 @@
       <legend style="color:#1aa094;">新社团信息</legend>
     </fieldset>
      
-    <form class="layui-form" action="">
+    <form id="form" class="layui-form" action="">
       <div class="layui-inline">
         <label class="layui-form-label">社团名称</label>
         <div class="layui-input-inline">
-          <input type="text" name="name" lay-verify="required" lay-reqtext="社团名称是必填项，岂能为空？" autocomplete="off" placeholder="请输入内容" class="layui-input">
+          <input type="text" name="name" lay-verify="no-required" lay-reqtext="社团名称是必填项，岂能为空？" autocomplete="off" placeholder="请输入内容" class="layui-input">
         </div>
       </div>
       <div class="layui-inline">
         <label class="layui-form-label">社团性质</label>
         <div class="layui-input-inline">
-          <input type="text" name="characters" lay-verify="required" lay-reqtext="社团性质是必填项，岂能为空？" autocomplete="off" placeholder="请输入内容" class="layui-input">
+          <input type="text" name="characters" lay-verify="no-required" lay-reqtext="社团性质是必填项，岂能为空？" autocomplete="off" placeholder="请输入内容" class="layui-input">
         </div>
       </div>
       <div class="layui-inline">
         <label class="layui-form-label">负责人姓名</label>
         <div class="layui-input-inline">
-          <input type="text" name="masterName" lay-verify="required" lay-reqtext="负责人姓名是必填项，岂能为空？" autocomplete="off" placeholder="请输入内容" class="layui-input">
+          <input type="text" name="masterName" lay-verify="no-required" lay-reqtext="负责人姓名是必填项，岂能为空？" autocomplete="off" placeholder="请输入内容" class="layui-input">
         </div>
       </div>
       <div class="layui-inline">
         <label class="layui-form-label">负责人电话</label>
         <div class="layui-input-inline">
-          <input type="text" name="masterTel" lay-verify="required" lay-reqtext="负责人电话是必填项，岂能为空？" autocomplete="off" placeholder="请输入内容" class="layui-input">
+          <input type="text" name="masterTel" lay-verify="no-required" lay-reqtext="负责人电话是必填项，岂能为空？" autocomplete="off" placeholder="请输入内容" class="layui-input">
         </div>
       </div>
       <div class="layui-inline">
         <label class="layui-form-label">领导组织</label>
         <div class="layui-input-inline">
-          <input type="text" name="leadOrganize" lay-verify="required" lay-reqtext="领导组织是必填项，岂能为空？" autocomplete="off" placeholder="请输入内容" class="layui-input">
+          <input type="text" name="leadOrganize" lay-verify="no-required" lay-reqtext="领导组织是必填项，岂能为空？" autocomplete="off" placeholder="请输入内容" class="layui-input">
         </div>
       </div>
       <div class="layui-inline">
@@ -56,13 +56,13 @@
       <div class="layui-inline">
         <label class="layui-form-label">创始人</label>
         <div class="layui-input-inline">
-          <input type="text" name="registrationName" lay-verify="required" lay-reqtext="创始人是必填项，岂能为空？" autocomplete="off" placeholder="请输入内容" class="layui-input">
+          <input type="text" name="registrationName" lay-verify="no-required" lay-reqtext="创始人是必填项，岂能为空？" autocomplete="off" placeholder="请输入内容" class="layui-input">
         </div>
       </div>
       <div class="layui-inline">
         <label class="layui-form-label">社团总人数</label>
         <div class="layui-input-inline">
-          <input type="text" name="num" lay-verify="required" lay-reqtext="社团总人数是必填项，岂能为空？" autocomplete="off" placeholder="请输入内容" class="layui-input">
+          <input type="text" name="num" lay-verify="no-required" lay-reqtext="社团总人数是必填项，岂能为空？" autocomplete="off" placeholder="请输入内容" class="layui-input">
         </div>
       </div>
       <div class="layui-inline">
@@ -76,49 +76,49 @@
       <div class="layui-form-item layui-form-text">
         <label class="layui-form-label">社团职责</label>
         <div class="layui-input-block">
-          <textarea name="duty" lay-verify="required" lay-reqtext="社团职责是必填项，岂能为空？" placeholder="请输入内容" class="layui-textarea"></textarea>
+          <textarea id="duty" name="duty" lay-verify="no-required" lay-reqtext="社团职责是必填项，岂能为空？" placeholder="请输入内容" class="layui-textarea"></textarea>
         </div>
       </div>
       <div class="layui-form-item layui-form-text">
         <label class="layui-form-label">社团信息</label>
         <div class="layui-input-block">
-          <textarea name="info" lay-verify="required" lay-reqtext="社团信息是必填项，岂能为空？" placeholder="请输入内容" class="layui-textarea"></textarea>
+          <textarea name="info" lay-verify="no-required" lay-reqtext="社团信息是必填项，岂能为空？" placeholder="请输入内容" class="layui-textarea"></textarea>
         </div>
       </div>
       <div class="layui-form-item layui-form-text">
         <label class="layui-form-label">总则</label>
         <div class="layui-input-block">
-          <textarea name="generalRules" lay-verify="required" lay-reqtext="总则是必填项，岂能为空？" placeholder="请输入内容" class="layui-textarea"></textarea>
+          <textarea name="generalRules" lay-verify="no-required" lay-reqtext="总则是必填项，岂能为空？" placeholder="请输入内容" class="layui-textarea"></textarea>
         </div>
       </div>
       <div class="layui-form-item layui-form-text">
         <label class="layui-form-label">宗旨</label>
         <div class="layui-input-block">
-          <textarea name="purpose" lay-verify="required" lay-reqtext="宗旨是必填项，岂能为空？" placeholder="请输入内容" class="layui-textarea"></textarea>
+          <textarea name="purpose" lay-verify="no-required" lay-reqtext="宗旨是必填项，岂能为空？" placeholder="请输入内容" class="layui-textarea"></textarea>
         </div>
       </div>
       <div class="layui-form-item layui-form-text">
         <label class="layui-form-label">权利</label>
         <div class="layui-input-block">
-          <textarea name="droit" lay-verify="required" lay-reqtext="权利是必填项，岂能为空？" placeholder="请输入内容" class="layui-textarea"></textarea>
+          <textarea name="droit" lay-verify="no-required" lay-reqtext="权利是必填项，岂能为空？" placeholder="请输入内容" class="layui-textarea"></textarea>
         </div>
       </div>
       <div class="layui-form-item layui-form-text">
         <label class="layui-form-label">义务</label>
         <div class="layui-input-block">
-          <textarea name="obligation" lay-verify="required" lay-reqtext="义务是必填项，岂能为空？" placeholder="请输入内容" class="layui-textarea"></textarea>
+          <textarea name="obligation" lay-verify="no-required" lay-reqtext="义务是必填项，岂能为空？" placeholder="请输入内容" class="layui-textarea"></textarea>
         </div>
       </div>
       <div class="layui-form-item layui-form-text">
         <label class="layui-form-label">要求</label>
         <div class="layui-input-block">
-          <textarea name="requirement" lay-verify="required" lay-reqtext="要求是必填项，岂能为空？" placeholder="请输入内容" class="layui-textarea"></textarea>
+          <textarea name="requirement" lay-verify="no-required" lay-reqtext="要求是必填项，岂能为空？" placeholder="请输入内容" class="layui-textarea"></textarea>
         </div>
       </div>
       <div class="layui-form-item layui-form-text">
         <label class="layui-form-label">其它</label>
         <div class="layui-input-block">
-          <textarea name="other" lay-verify="required" lay-reqtext="其它是必填项，岂能为空？" placeholder="请输入内容" class="layui-textarea"></textarea>
+          <textarea name="other" lay-verify="no-required" lay-reqtext="其它是必填项，岂能为空？" placeholder="请输入内容" class="layui-textarea"></textarea>
         </div>
       </div>
       <div class="layui-form-item">

@@ -44,3 +44,7 @@ ul, ol { list-style: none; }
 .clear{clear: both;}
 .fl{ float: left; }
 .fr{float: right;}
+table {
+  border-radius: 5px;
+  box-shadow: 10px 10px 20px 10px rgb(168, 234, 235), -10px 10px 10px 10px rgba(255, 255, 255, 0.5);
+}
