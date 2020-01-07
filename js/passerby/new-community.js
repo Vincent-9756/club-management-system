@@ -17,10 +17,13 @@ layui.use(['form', 'layer', 'laydate'], function(){
       url: url + "/department/addDepartment",
       dataType: "json",
       contentType: "application/json;charset=UTF-8",
+      xhrFields: {
+        withCredentials: true
+      },
       data: JSON.stringify(data.field),
       success: function (res) {
         console.log(res)
-        layer.msg('添加成功');
+        layer.msg('申请成功');
       }
     });
     $("#form")[0].reset();

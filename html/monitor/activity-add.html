@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>校园社团管理系统</title>
+  <link rel="stylesheet" href="../../layui/css/layui.css" media="all">
+	<link rel="stylesheet" type="text/css" href="../../css/admin/meetingList.css"/>
+  <link rel="stylesheet" type="text/css" href="../../css/admin/base.css"/>
+  <link rel="stylesheet" href="../../css/passerby/new-community.css">
+</head>
+<body>
+  <div id="newCommunityContainer">
+    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+      <legend style="color:#1aa094;">新策划信息</legend>
+    </fieldset>
+     
+    <form id="form" class="layui-form" action="">
+      <div class="layui-inline">
+        <label class="layui-form-label">活动名称</label>
+        <div class="layui-input-inline">
+          <input type="text" name="name" lay-verify="no-required" lay-reqtext="活动名称是必填项，岂能为空？" autocomplete="off" placeholder="请输入内容" class="layui-input">
+        </div>
+      </div>
+      <div class="layui-inline">
+        <label class="layui-form-label">策划人姓名</label>
+        <div class="layui-input-inline">
+          <input type="text" name="creatorName" lay-verify="no-required" lay-reqtext="策划人姓名是必填项，岂能为空？" autocomplete="off" placeholder="请输入内容" class="layui-input">
+        </div>
+      </div>
+      <div class="layui-inline">
+        <label class="layui-form-label">活动地点</label>
+        <div class="layui-input-inline">
+          <input type="text" name="place" lay-verify="no-required" lay-reqtext="活动地点是必填项，岂能为空？" autocomplete="off" placeholder="请输入内容" class="layui-input">
+        </div>
+      </div>
+      <div class="layui-inline">
+        <label class="layui-form-label">活动对象</label>
+        <div class="layui-input-inline">
+          <input type="text" name="person" lay-verify="no-required" lay-reqtext="活动对象是必填项，岂能为空？" autocomplete="off" placeholder="请输入内容" class="layui-input">
+        </div>
+      </div><div class="layui-inline">
+        <label class="layui-form-label">活动形式</label>
+        <div class="layui-input-inline">
+          <input type="text" name="form" lay-verify="no-required" lay-reqtext="活动形式是必填项，岂能为空？" autocomplete="off" placeholder="请输入内容" class="layui-input">
+        </div>
+      </div>
+      <div class="layui-inline">
+        <label class="layui-form-label">活动时间</label>
+        <div class="layui-input-inline">
+          <input type="text" name="createTime" id="date" lay-verify="datetime" placeholder="yyyy-MM-dd HH:mm:ss" autocomplete="off" class="layui-input">
+        </div>
+      </div>
+      <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label">活动主题</label>
+        <div class="layui-input-block">
+          <textarea id="duty" name="theme" lay-verify="no-required" lay-reqtext="活动主题是必填项，岂能为空？" placeholder="请输入内容" class="layui-textarea"></textarea>
+        </div>
+      </div>
+      <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label">活动目的</label>
+        <div class="layui-input-block">
+          <textarea name="goal" lay-verify="no-required" lay-reqtext="活动目的是必填项，岂能为空？" placeholder="请输入内容" class="layui-textarea"></textarea>
+        </div>
+      </div>
+      <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label">人员安排</label>
+        <div class="layui-input-block">
+          <textarea name="arrangements" lay-verify="no-required" lay-reqtext="人员安排是必填项，岂能为空？" placeholder="请输入内容" class="layui-textarea"></textarea>
+        </div>
+      </div>
+      <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label">活动流程</label>
+        <div class="layui-input-block">
+          <textarea name="flow" lay-verify="no-required" lay-reqtext="活动流程是必填项，岂能为空？" placeholder="请输入内容" class="layui-textarea"></textarea>
+        </div>
+      </div>
+      <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label">活动内容</label>
+        <div class="layui-input-block">
+          <textarea name="content" lay-verify="no-required" lay-reqtext="活动内容是必填项，岂能为空？" placeholder="请输入内容" class="layui-textarea"></textarea>
+        </div>
+      </div>
+      <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label">义务</label>
+        <div class="layui-input-block">
+          <textarea name="obligation" lay-verify="no-required" lay-reqtext="义务是必填项，岂能为空？" placeholder="请输入内容" class="layui-textarea"></textarea>
+        </div>
+      </div>
+      <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label">资金预算</label>
+        <div class="layui-input-block">
+          <textarea name="budget" lay-verify="no-required" lay-reqtext="资金预算是必填项，岂能为空？" placeholder="请输入内容" class="layui-textarea"></textarea>
+        </div>
+      </div>
+      <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label">奖励</label>
+        <div class="layui-input-block">
+          <textarea name="award" lay-verify="no-required" lay-reqtext="奖励是必填项，岂能为空？" placeholder="请输入内容" class="layui-textarea"></textarea>
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <div class="layui-input-block">
+          <button type="submit" class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
+          <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <script src="../../js/jquery-3.4.1.min.js"></script>
+	<script src="../../layui/layui.js"></script>
+	<script src="../../js/api.js"></script>
+	<script src="../../js/monitor/activity-add.js"></script>
+</body>
+</html>
