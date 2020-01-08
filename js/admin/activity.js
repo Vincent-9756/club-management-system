@@ -37,13 +37,28 @@ $(function () {
       '</div>');
     $("#page2").append('<div id="divpage"></div>');
     re = new RegExp("<br/>", "g"); //定义正则表达式
-    var goal = data.goal.replace(re, "</p><p>");
-    var arrangements = data.arrangements.replace(re, "</p><p>");
-    var flow = data.flow.replace(re, "</p><p>");
-    var content = data.content.replace(re, "</p><p>");
-    var budget = data.budget.replace(re, "</p><p>");
-    var award = data.award.replace(re, "</p><p>");
-    var description = data.description.replace(re, "</p><p>");
+    let goal = '无', arrangements = '无', flow = '无', content = '无', budget = '无', award = '无', description = '无';
+    if (data.goal != null && data.goal != '') {
+      goal = data.goal.replace(re, "</p><p>");
+    }
+    if (data.arrangements != null && data.arrangements != '') {
+      arrangements = data.arrangements.replace(re, "</p><p>");
+    }
+    if (data.flow != null && data.flow != '') {
+      flow = data.flow.replace(re, "</p><p>");
+    }
+    if (data.content != null && data.content != '') {
+      content = data.content.replace(re, "</p><p>");
+    }
+    if (data.budget != null && data.budget != '') {
+      budget = data.budget.replace(re, "</p><p>");
+    }
+    if (data.award != null && data.award != '') {
+      award = data.award.replace(re, "</p><p>");
+    }
+    if (data.description != null && data.description != '') {
+      description = data.description.replace(re, "</p><p>");
+    }
     $("#divpage").append(
       '<div align="center" style="text-align: center;">' +
       '	<p class="Name">福建工程学院国脉信息学院' + data.name + '</p>' +
@@ -75,6 +90,8 @@ $(function () {
       '	<p>' + budget + '</p>' +
       '	<p class="FirstTitle">十三、奖励：</p>' +
       '	<p>' + award + '</p>' +
+      '	<p class="FirstTitle">十四、活动说明：</p>' +
+      '	<p>' + description + '</p>' +
       '</div>');
     $("#divpage").append(
       '<div align="right">' +
