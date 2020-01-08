@@ -104,7 +104,7 @@ $(function () {
 		var upload = layui.upload;
 		upload.render({
 		    elem: '#avatar2'
-		    ,url: '../CmUser/upload.do'
+		    ,url: '/file/uploadFile'
 		    ,multiple: false
 		    ,done: function(res){
 		    	$('#avatar2').attr("src",res.data.avatar);
