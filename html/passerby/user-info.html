@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="renderer" content="webkit">
+	<title>校园社团管理系统</title>
+	<link rel="stylesheet" href="../../css/passerby/selfInfo.css">
+</head>
+
+<body>
+
+	<body>
+		<div class="resume-center-container">
+			<!--编辑简历 背景区域-->
+			<div class="bg-mask"></div>
+			<div>
+				<div class="resume-container colour-4 rh11">
+					<div class="main-content">
+						<div class="ResumesBasic-box clearfixed">
+							<!-- 简历照片区域 -->
+							<div class="ResumesPic">
+								<div class="show">
+									<img id="avatar1" src="../../images/logo.png">
+								</div>
+								<div class="modify hide">
+									<img id="avatar2" src="../../images/logo.png">
+								</div>
+								<input class="layui-btn layui-btn-small layui-btn-normal modifyBtn" id="modify1" value="修改信息">
+								<input class="layui-btn layui-btn-small layui-btn-normal modifyBtn hide" id="modify2" value="确认">
+							</div>
+							<div class="ResumesBasic">
+								<div class="ResumesBasicTitle">
+									<h1 id="userName">-</h1>
+									<h3 id="departmentName">-<span class="resume_key" id="role">-</span></h3>
+								</div>
+								<div class="ResumesBasicTitle">
+									<div class="h4">
+										<p class="phone-h4" data-class="email-h4">
+											<span id="account" class="resume_key show hide" data-keyname="account" data-type="value"
+												contenteditable="false" spellcheck="false">-</span>
+											<input id="account1" class="modify hide" placeholder="账号">
+										</p>
+										<p class="phone-h4" data-class="phone-h4">
+											<span id="tel" class="resume_key show hide" data-keyname="mobile" data-type="value"
+												contenteditable="false" spellcheck="false">-</span>
+											<input id="tel1" class="modify hide" placeholder="电话">
+										</p>
+										<p class="sex-h4" data-class="sex-h4">
+											<span id="sex" class="resume_key" data-keyname="sex" data-type="value" contenteditable="false"
+												spellcheck="false">-</span>
+											<span id="birthday" class="resume_key" data-keyname="birthday" data-type="value"
+												contenteditable="false" spellcheck="false">-</span>
+										</p>
+										<p class="email-h4" data-class="email-h4">
+											<span id="email" class="resume_key" data-keyname="email" data-type="value" contenteditable="false"
+												spellcheck="false">-</span>
+										</p>
+										<p class="address-h4" data-class="address-h4">
+											<span id="roots" class="resume_key" data-keyname="expectcity" data-type="value"
+												contenteditable="false" spellcheck="false">-</span>
+										</p>
+										<p class="politics-h4" data-class="politics-h4">
+											<span id="political" class="resume_key" data-keyname="politics" data-type="value"
+												contenteditable="false" spellcheck="false">-</span>
+										</p>
+										<p class="rest rest1" data-class="rest1">
+											<span id="volk" class="resume_key" data-keyname="rest1" data-type="value" contenteditable="false"
+												spellcheck="false">-</span>族
+										</p>
+										<p class="rest rest2" data-class="rest2">
+											<span id="age" class="resume_key" data-keyname="rest5" data-type="value" contenteditable="false"
+												spellcheck="false">-</span>岁
+										</p>
+										<p class="rest rest2" data-class="rest2">
+											<span id="school" class="resume_key" data-keyname="rest2" data-type="value"
+												contenteditable="false" spellcheck="false">-</span>
+										</p>
+										<p class="rest rest3" data-class="rest3">
+											<span id="code" class="resume_key show hide" data-keyname="rest3" data-type="value"
+												contenteditable="false" spellcheck="false">-</span>
+											<input id="code1" class="modify hide" placeholder="输入学号绑定学生信息">
+										</p>
+									</div>
+									<div class="adressH">
+										<p data-class="rest3">
+											<span class="adressP" id="address" data-keyname="rest4" data-type="value" contenteditable="false"
+												spellcheck="false">-</span>
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="ResumesList">
+							<div class="ListAppend">
+								<!--荣誉奖励-->
+								<div class="ListItem Honors">
+									<div class="ItemTitle">
+										<span class="title-line"></span>
+										<span class="title">
+											<i>荣誉奖励</i>
+										</span>
+									</div>
+									<div class="ItemControl">
+										<div class="ItemList">
+											<div class="ItemRight">
+												<div class="ItemDetails">
+													<div class="resume_key">
+														<article id="award">
+															<ul>
+																<li>-</li>
+															</ul>
+															<ul>
+																<li>-</li>
+															</ul>
+															<ul>
+																<li>-</li>
+															</ul>
+														</article>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="send-box-mask">
+		</div>
+		<script src="../../js/jquery-3.4.1.min.js"></script>
+		<script src="../../layui/layui.js"></script>
+		<script src="../../js/api.js"></script>
+		<!-- <script src="../plugs/clipboard.min.js"></script>
+		<script src="../plugs/int.prew.js"></script>
+		<script src="../plugs/echart/echarts.min.js"></script>
+		<script src="../plugs/china.js"></script> -->
+		<script src="../../js/passerby/userInfo.js"></script>
+	</body>
+
+</html>

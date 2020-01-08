@@ -18,6 +18,7 @@ $(function () {
 			data: JSON.stringify({
 				pageNum: 1,
 				pageSize: 5,
+				status: "ENABLED"
 			}),
 			xhrFields: {
 				withCredentials: true
@@ -45,6 +46,7 @@ $(function () {
 						data: JSON.stringify({
 							pageNum: obj.curr,
 							pageSize: obj.limit,
+							status: "ENABLED"
 						}),
 						xhrFields: {
 							withCredentials: true
@@ -53,13 +55,13 @@ $(function () {
 						success: function (data) {
 							$("#SchemeDemo").empty();
 							for (var i = 0; i < obj.limit; i++) {
-								if(data.count < 1){
-                                    $("#Schemepage").hide();
-                                    return ;
-                                }
-                                if(i >= data.data.length) {
-                                    return ;
-                                }
+								if (data.count < 1) {
+									$("#Schemepage").hide();
+									return;
+								}
+								if (i >= data.data.length) {
+									return;
+								}
 								item = data.data[i];
 								$("#SchemeDemo").append('<div class="ResultCont" style="margin-top: 10px;padding-bottom: 10px;margin-bottom: 10px;">' +
 									'<div class="title">' +
@@ -112,6 +114,6 @@ $(function () {
 		});
 	}
 	see = function (id) {
-		window.open('../../html/admin/activity.html?id='+id+'');
+		window.open('../../html/admin/activity.html?id=' + id + '');
 	}
 });
