@@ -7287,7 +7287,5 @@ input.modify {
 }
 
 .layui-upload-file {
-  position: absolute;
-  top: -35px;
-  left: -15px;
+  display: none;
 }

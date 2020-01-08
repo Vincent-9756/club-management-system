@@ -39,11 +39,6 @@ $(function () {
 				// $('#code').text(data.student.code);
 				// $('#code1').val(data.student.code);
 				// $('#address').text(data.student.address);
-				// $('#award').html('');
-				// for (var i = 0; i < data.award.length; i++) {
-				// 	var array_element = data.award[i];
-				// 	$('#award').append('<ul><li>' + array_element.time + '' + array_element.awardName + '</li></u');
-				// }
 			},
 			error: function (res) {
 				layer.msg('网络错误，请重新登录', {
