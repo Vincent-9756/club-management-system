@@ -37,7 +37,10 @@ $(function () {
       '</div>');
     $("#page2").append('<div id="divpage"></div>');
     re = new RegExp("<br/>", "g"); //定义正则表达式
-    let goal = '无', arrangements = '无', flow = '无', content = '无', budget = '无', award = '无', description = '无';
+    let goal = '无', theme = '无', arrangements = '无', flow = '无', content = '无', budget = '无', award = '无', description = '无';
+    if (data.theme != null && data.theme != '') {
+      theme = data.theme.replace(re, "</p ><p>");
+    }
     if (data.goal != null && data.goal != '') {
       goal = data.goal.replace(re, "</p><p>");
     }
