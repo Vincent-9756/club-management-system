@@ -19,8 +19,8 @@ $(function () {
 			async: true,
 			success: function (data) {
 				console.log(data)
-				$('#avatar1').attr('src', data.avatar);
-				$('#avatar2').attr('src', data.avatar);
+				$('#avatar1').attr('src', url + data.avatar);
+				$('#avatar2').attr('src', url + data.avatar);
 				$('#userName').text(data.username);
 				$('#departmentName').text(data.department);
 				$('#role').text(data.state);
@@ -95,16 +95,22 @@ $(function () {
 		});
 	});
 
-	layui.use(['upload'],function() {
-		var upload = layui.upload;
+	layui.use(['laydate', 'layer', 'upload'], function () {
+		laydate = layui.laydate;
+		layer = layui.layer;
+		upload = layui.upload;
+	  
+		//上传头像
 		upload.render({
-		    elem: '#avatar2'
-		    ,url: '/file/uploadFile'
-		    ,multiple: false
-		    ,done: function(res){
-		    	$('#avatar2').attr("src",res.data.avatar);
-		    	$('#avatar1').attr("src",res.data.avatar);
-		    }
-		  });
+		  elem: '#avatar2',
+		  url: url + '/file/uploadFile',
+		  multiple: false,
+		  done: function (res) {
+			console.log(res.data)
+			$('#avatar2').attr("src",url + res.data);
+			$('#avatar1').attr("src",url + res.data);
+		  }
+		});
 	});
+
 });
