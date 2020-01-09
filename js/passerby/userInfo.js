@@ -19,8 +19,8 @@ $(function () {
 			async: true,
 			success: function (data) {
 				console.log(data)
-				$('#avatar1').attr('src', url + data.avatar);
-				$('#avatar2').attr('src', url + data.avatar);
+				$('#avatar1').attr('src', data.avatar);
+				$('#avatar2').attr('src', data.avatar);
 				$('#userName').text(data.username);
 				$('#departmentName').text(data.department);
 				$('#role').text(data.state);
@@ -28,17 +28,17 @@ $(function () {
 				$('#account1').val(data.account);
 				$('#tel').text(data.tel);
 				$('#tel1').val(data.tel);
-				// $('#sex').text(data.student.sex);
-				// $('#birthday').text(data.student.birthday);
-				// $('#email').text(data.student.email);
-				// $('#roots').text(data.student.roots);
-				// $('#political').text(data.student.political);
-				// $('#volk').text(data.student.volk);
-				// $('#age').text(data.student.age);
-				// $('#school').text(data.student.school);
-				// $('#code').text(data.student.code);
-				// $('#code1').val(data.student.code);
-				// $('#address').text(data.student.address);
+				$('#sex').text(data.student.sex);
+				$('#birthday').text(data.student.birthday);
+				$('#email').text(data.student.email);
+				$('#roots').text(data.student.roots);
+				$('#political').text(data.student.political);
+				$('#volk').text(data.student.volk);
+				$('#age').text(data.student.age);
+				$('#school').text(data.student.school);
+				$('#code').text(data.student.code);
+				$('#code1').val(data.student.code);
+				$('#address').text(data.student.address);
 			},
 			error: function (res) {
 				layer.msg('网络错误，请重新登录', {
@@ -62,22 +62,27 @@ $(function () {
 		$('#modify2').addClass('hide');
 		$('#modify1').removeClass('hide');
 		$.ajax({
-			url: '../CmUser/updateCmUser.do',
+			url: url + '/user/updateMyInfo',
 			type: 'post',
 			dataType: 'json',
 			async: true,
-			data: {
-				'cmUser_avatar': $('#avatar2').attr('src'),
-				'cmUser_account': $('#account1').val(),
-				'cmUser_tel': $('#tel1').val(),
-				'cmUser_code': $('#code1').val()
+			contentType: "application/json;charset=UTF-8",
+			xhrFields: {
+				withCredentials: true
 			},
+			data: JSON.stringify({
+				'avatar': $('#avatar2').attr('src'),
+				'account': $('#account1').val(),
+				'tel': $('#tel1').val(),
+				'code': $('#code1').val()
+			}),
 			success: function (data) {
-				if (data.result == "error") {
-					layer.msg(data.errors, {
+				if (data <= 0 ) {
+					layer.msg("修改失败，请重试！", {
 						icon: 5,
 						time: 1000
 					});
+					refresh();
 				} else {
 					layer.msg('修改成功', {
 						icon: 1,
@@ -99,17 +104,17 @@ $(function () {
 		laydate = layui.laydate;
 		layer = layui.layer;
 		upload = layui.upload;
-	  
+
 		//上传头像
 		upload.render({
-		  elem: '#avatar2',
-		  url: url + '/file/uploadFile',
-		  multiple: false,
-		  done: function (res) {
-			console.log(res.data)
-			$('#avatar2').attr("src",url + res.data);
-			$('#avatar1').attr("src",url + res.data);
-		  }
+			elem: '#avatar2',
+			url: url + '/file/uploadFile',
+			multiple: false,
+			done: function (res) {
+				console.log(res.data)
+				$('#avatar2').attr("src", url + res.data);
+				$('#avatar1').attr("src", url + res.data);
+			}
 		});
 	});
 

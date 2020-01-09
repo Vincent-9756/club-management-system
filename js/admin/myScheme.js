@@ -46,7 +46,7 @@ $(function () {
 						data: JSON.stringify({
 							pageNum: obj.curr,
 							pageSize: obj.limit,
-							status: "ENABLED"
+							status: "ALL"
 						}),
 						xhrFields: {
 							withCredentials: true
