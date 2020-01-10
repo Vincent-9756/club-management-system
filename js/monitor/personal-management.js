@@ -1,51 +1,18 @@
-//加载部门列表
-$.ajax({
-  type: "post",
-  url: url + "/department/queryDepartment",
-  dataType: "json",
-  contentType: "application/json;charset=UTF-8",
-  data: JSON.stringify({
-    "username": ''
-  }),
-  success: function (res) {
-    var data = '';
-    for (let index = 0; index < res.data.length; index++) {
-      if (index == res.data.length - 1) {
-        data += '<li class="community-item">\n' +
-          '<a href="javascript:;" value="' + res.data[index].id + '">' + res.data[index].name + '</a>\n' +
-          '</li>\n'
-      } else {
-        data += '<li class="community-item">\n' +
-          '<a href="javascript:;" value="' + res.data[index].id + '">' + res.data[index].name + '</a>\n' +
-          '</li>\n' +
-          '<hr>'
-      }
-    }
-    $('.community-nav').append(data);
-
-    //点击刷新干事列表
-    $('.community-nav').on('click', '.community-item a', function () {
-      $(this).addClass('community-this').parent().siblings().children().removeClass('community-this');
-      $("#name").val("");
-      var departmentId = $(this).attr("value");
-      initHeader(departmentId);
-      refresh(departmentId,"");
-    });
-
-    $('.community-item').eq(0).children('a').click();
-  }
-
-});
+refresh("");
+initHeader();
 //加载干部
-function initHeader(id) {
+function initHeader() {
   $.ajax({
     type: "post",
     url: url + "/user/queryCadre",
     dataType: "json",
-    contentType: "application/json;charset=UTF-8",
     data: JSON.stringify({
-      "departmentId": id,
+      "username": ""
     }),
+    contentType: "application/json;charset=UTF-8",
+    xhrFields: {
+      withCredentials: true
+    },
     success: function (res) {
       var str = '',
           obj = null;
@@ -85,7 +52,7 @@ function initHeader(id) {
 }
 
 //加载干事信息
-function refresh(id,name) {
+function refresh(name) {
   $('#EmployeeDemo').html("");
   layui.use('flow', function () {
     var flow = layui.flow;
@@ -95,13 +62,15 @@ function refresh(id,name) {
         var lis = [];
         $.ajax({
           type: "post",
-          url: url + "/user/queryUser",
+          url: url + "/user/queryEmployeesInfo",
           dataType: "json",
-          contentType: "application/json;charset=UTF-8",
           data: JSON.stringify({
-            "username": name,
-            "departmentId": id,
+            "username": name
           }),
+          xhrFields: {
+            withCredentials: true
+          },
+          contentType: "application/json;charset=UTF-8",
           success: function (res) {
             layui.each(res.data, function (index, item) {
               lis.push('<div class="layui-col-md4 layui-col-sm6">');
@@ -124,8 +93,8 @@ function refresh(id,name) {
               lis.push('<p><i class="layui-icon layui-icon-cellphone"></i>:' + item.tel + '</p>');
               lis.push('</div>');
               lis.push('</div>');
-              lis.push('<div class="layadmin-maillist-img layadmin-font-blod">');
-              lis.push('<div class="layui-btn-group btn">');
+              lis.push('<div class="layadmin-maillist-img layadmin-font-blod" style=" width: 100%;">');
+              lis.push('<div class="layui-btn-group btn" style="margin-top: 12px ">');
               lis.push('<button class="layui-btn layui-btn-primary layui-btn-sm dismiss" value="' + item.id + '">辞退</button>');
               lis.push('<button class="layui-btn layui-btn-primary layui-btn-sm appoint1" value="' + item.id + '">任命为社长</button>');
               lis.push('<button class="layui-btn layui-btn-primary layui-btn-sm appoint2" value="' + item.id + '">任命为副社长</button>');
@@ -195,5 +164,5 @@ $('body').on('click', '.appoint2', function () {
 
 $('#name').on('input propertychange', function () {
   name = $('#name').val();
-  refresh($(".community-this").attr("value"), $('#name').val());
+  refresh($('#name').val());
 });

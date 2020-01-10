@@ -21,11 +21,11 @@ $(function () {
 				console.log(data)
 				$('#avatar1').attr('src', data.avatar);
 				$('#avatar2').attr('src', data.avatar);
-				$('#userName').text(data.username);
+				$('#account').text(data.account);
 				$('#departmentName').text(data.department);
 				$('#role').text(data.state);
-				$('#account').text(data.account);
-				$('#account1').val(data.account);
+				$('#username').text(data.username);
+				$('#username1').val(data.username);
 				$('#tel').text(data.tel);
 				$('#tel1').val(data.tel);
 				$('#sex').text(data.student.sex);
@@ -72,7 +72,7 @@ $(function () {
 			},
 			data: JSON.stringify({
 				'avatar': $('#avatar2').attr('src'),
-				'account': $('#account1').val(),
+				'username': $('#username1').val(),
 				'tel': $('#tel1').val(),
 				'code': $('#code1').val()
 			}),

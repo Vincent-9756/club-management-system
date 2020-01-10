@@ -1,110 +1,112 @@
-body,#personal-management {
-  overflow: auto;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+body,
+#personal-management {
+	overflow: auto;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
 }
 
-body::-webkit-scrollbar,#personal-management::-webkit-scrollbar {
-  display: none;
+body::-webkit-scrollbar,
+#personal-management::-webkit-scrollbar {
+	display: none;
 }
 
 #personal-management {
-  width: 100%;
-  height: 100%;
-  padding: 20px;
-  display: flex;
-  justify-content: space-between;
+	width: 100%;
+	height: 100%;
+	padding: 20px;
+	display: flex;
+	justify-content: space-between;
 }
 
 .community-list {
-  width: 160px;
-  height: 100%;
-  text-align: center;
-  border-right: 1px solid #eee;
-  color: #666;
+	width: 160px;
+	height: 100%;
+	text-align: center;
+	border-right: 1px solid #eee;
+	color: #666;
 }
 
 .community-this {
-  color: #5FB878!important;
+	color: #5FB878 !important;
 }
 
 .personalContainer {
-  flex: 1;
-  padding: 20px;
+	flex: 1;
+	padding: 20px;
 }
 
 button {
-  background: #1aa094!important;
+	background: #1aa094 !important;
 }
 
 .layui-table {
-  margin-top: 20px;
+	margin-top: 20px;
 }
 
 #pagetion {
-  width: 100%;
-  position: relative;
+	width: 100%;
+	position: relative;
 }
 
 #pagetion .layui-laypage {
-  position: absolute;
-  left: 50%;
-  top: 5px;
-  transform: translateX(-50%);
-  white-space: nowrap;
+	position: absolute;
+	left: 50%;
+	top: 5px;
+	transform: translateX(-50%);
+	white-space: nowrap;
 }
 
 tbody,
 .layui-table th {
-  text-align: center;
+	text-align: center;
 }
 
 .checkDetail,
 .editStudent {
-  margin-right: 10px;
+	margin-right: 10px;
 }
 
 .checkDetail {
-  cursor: pointer;
-  color: #00bcd4;
+	cursor: pointer;
+	color: #00bcd4;
 }
 
 .editStudent {
-  cursor: pointer;
-  color: #2196f3;
+	cursor: pointer;
+	color: #2196f3;
 }
 
 .deleteStudent {
-  cursor: pointer;
-  color: #ff5722;
+	cursor: pointer;
+	color: #ff5722;
 }
 
 .checkDetail:hover,
 .editStudent:hover,
 .deleteStudent:hover {
-  filter: brightness(1.5);
+	filter: brightness(1.5);
 }
 
 .searchBox {
-  margin-top: 20px;
-  display: flex;
-  justify-content: space-around;
+	margin-top: 20px;
+	display: flex;
+	justify-content: space-around;
 }
 
 .searchBox .searchName {
-  width: 205px;
-  height: 38px;
-  line-height: 38px;
-  text-indent: 14px;
-  position: relative;
-  border: 1px solid #e6e6e6;
+	width: 205px;
+	height: 38px;
+	line-height: 38px;
+	text-indent: 14px;
+	position: relative;
+	border: 1px solid #e6e6e6;
 }
 
 .searchBox .searchName img {
-  position: absolute;
-  right: 5px;
-  top: 5px;
-  cursor: pointer;
+	position: absolute;
+	right: 5px;
+	top: 5px;
+	cursor: pointer;
 }
 
 /** layuiAdmin.pro-v1.2.1 LPPL License By http://www.layui.com/admin/ */
@@ -129,8 +131,8 @@ tbody,
 	text-align: left
 }
 
-.layadmin-homepage-panel .text-center, .layadmin-maillist-fluid .layadmin-text-center
-	{
+.layadmin-homepage-panel .text-center,
+.layadmin-maillist-fluid .layadmin-text-center {
 	text-align: center;
 	margin-top: 15px;
 }
@@ -145,7 +147,7 @@ tbody,
 
 .layadmin-maillist-fluid .layadmin-contact-box {
 	padding: 20px;
-    height: 200px;
+	/* height: 200px; */
 	background-color: #fff;
 	border: 1px solid #e7eaec;
 	overflow: hidden
@@ -355,7 +357,7 @@ tbody,
 }
 
 .layadmin-homepage-list-imgtxt .layui-col-sm10,
-	.layadmin-homepage-list-imgtxt .layui-col-sm2 {
+.layadmin-homepage-list-imgtxt .layui-col-sm2 {
 	background: 0 0
 }
 
@@ -368,7 +370,7 @@ tbody,
 .layadmin-homepage-list-imgtxt .panel-body .media-left {
 	display: block;
 	float: left;
-	vertical-align: top;
+	/* vertical-align: top; */
 	padding-right: 10px
 }
 
@@ -394,8 +396,7 @@ tbody,
 	margin-bottom: 10px
 }
 
-.layadmin-homepage-list-imgtxt .media-body .min-font .layui-breadcrumb a
-	{
+.layadmin-homepage-list-imgtxt .media-body .min-font .layui-breadcrumb a {
 	font-size: 11px
 }
 
@@ -436,8 +437,7 @@ tbody,
 	padding-top: 10px
 }
 
-.layadmin-homepage-list-imgtxt .media-body .media .media-right .list-inline
-	{
+.layadmin-homepage-list-imgtxt .media-body .media .media-right .list-inline {
 	margin-bottom: 10px
 }
 
@@ -446,8 +446,7 @@ tbody,
 	display: inline-block
 }
 
-.layadmin-homepage-list-imgtxt .media-body .media .media-right .list-inline li span
-	{
+.layadmin-homepage-list-imgtxt .media-body .media .media-right .list-inline li span {
 	font-weight: 600
 }
 
@@ -457,8 +456,7 @@ tbody,
 	width: auto
 }
 
-.layadmin-homepage-list-imgtxt .media-body .media .media-left .font-blod
-	{
+.layadmin-homepage-list-imgtxt .media-body .media .media-left .font-blod {
 	font-weight: 700;
 	color: #758697
 }
@@ -474,15 +472,13 @@ tbody,
 	margin-top: 15px
 }
 
-.layadmin-homepage-list-imgtxt .media-body .media-list .media-item-left
-	{
+.layadmin-homepage-list-imgtxt .media-body .media-list .media-item-left {
 	display: inline-block;
 	padding-right: 10px;
 	margin-bottom: 5px
 }
 
-.layadmin-homepage-list-imgtxt .media-body .media-list .media-item-left img
-	{
+.layadmin-homepage-list-imgtxt .media-body .media-list .media-item-left img {
 	display: block;
 	float: left
 }
@@ -499,8 +495,7 @@ tbody,
 	display: inline-block
 }
 
-.layadmin-homepage-list-imgtxt .media-body .media-list .media-text div:nth-child(2)
-	{
+.layadmin-homepage-list-imgtxt .media-body .media-list .media-text div:nth-child(2) {
 	margin-top: 5px
 }
 
@@ -804,8 +799,7 @@ tbody,
 	padding: 8px 0
 }
 
-.layadmin-caller .caller-contar .caller-item .caller-main p:first-child
-	{
+.layadmin-caller .caller-contar .caller-item .caller-main p:first-child {
 	padding-top: 0
 }
 
@@ -813,8 +807,7 @@ tbody,
 	margin-left: 5px
 }
 
-.layadmin-caller .caller-contar .caller-item .caller-main .caller-adds i
-	{
+.layadmin-caller .caller-contar .caller-item .caller-main .caller-adds i {
 	padding-right: 5px;
 	margin: 0
 }
@@ -840,28 +833,64 @@ tbody,
 	height: 40px;
 	border-radius: 100%
 }
-.layui-btn-group .layui-btn{
+
+.layui-btn-group .layui-btn {
 	color: #fff;
 	font-weight: normal;
 }
+
 .layui-btn-group .layui-btn-primary:hover {
-    background-color: #84d4df;
-    color: #fff;
+	background-color: #84d4df;
+	color: #fff;
 }
 
-.mydialog{
+.mydialog {
 	margin-top: 10%;
-    position: absolute;
-    margin-left: 12%;
-    padding-left:6%;
-    z-index:999;
-    text-align:center;
-    padding-top:5%;
-    padding-bottom:5%;
-    background-color: #ccc;
-/*     width: 800px; */
-    background-color: rgba(0,0,0,.6);
+	position: absolute;
+	margin-left: 12%;
+	padding-left: 6%;
+	z-index: 999;
+	text-align: center;
+	padding-top: 5%;
+	padding-bottom: 5%;
+	background-color: #ccc;
+	/*     width: 800px; */
+	background-color: rgba(0, 0, 0, .6);
 }
-.hide{
+
+.hide {
 	display: none;
+}
+
+.avatar-box {
+	position: relative;
+	display: inline-block;
+	margin: 0 30px 0 30px;
+}
+
+.avatar {
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	position: absolute;
+}
+
+.border {
+	width: 100px;
+	height: 100px;
+	z-index: 10;
+	position: relative;
+}
+
+.main {
+	width: 90px !important;
+	height: 90px !important;
+}
+.layui-btn-group.btn {
+	left: 0;
+    right: 0;
+    width: 250px;
+    margin: 0 auto !important;
+	position: absolute;
+	bottom: 15px;
 }

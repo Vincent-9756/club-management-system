@@ -69,7 +69,11 @@ $('body').on('click', '.appoint1', function () {
       "id": $(this).attr("value")
     },
     success: function (res) {
-      parent.layui.layer.msg('操作成功!');
+      if (res > 0) {
+        parent.layui.layer.msg('操作成功!');
+      } else {
+        parent.layui.layer.msg('操作失败!');
+      }
       refresh();
     }
   });
