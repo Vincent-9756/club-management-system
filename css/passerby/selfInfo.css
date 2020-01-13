@@ -7273,9 +7273,14 @@ span.adressP {
   padding-top: 50px;
 }
 
-input.modify {
+input.modify, textarea.modify {
   border-radius: 6px;
   border: 1px solid #49ccdd;
+}
+
+textarea.modify {
+  width: 100%;
+  margin-top: 10px;
 }
 
 .show {
