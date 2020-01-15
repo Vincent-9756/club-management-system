@@ -156,7 +156,9 @@ tbody,
 .layadmin-maillist-fluid .layadmin-text-center img {
 	max-width: 80%;
 	border-radius: 50%;
-	margin-top: 5px
+	margin-top: 5px;
+	width: 80px;
+	height: 80px;
 }
 
 .layadmin-maillist-fluid .layadmin-font-blod {
