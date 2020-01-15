@@ -16,7 +16,7 @@ layui.use('layer', function () {
         $('.ResumesBasic-box').empty().append('<div class="ResumesBasic">' +
           '<div class="ResumesBasicTitle">' +
           '<h1>' + res.name + '</h1>' +
-          '<h3>领导组织：' + '<span class="resume_key show">' + res.leadOrganize + '' + '</span>' + '<input id="leadOrganize" class="modify hide" placeholder="领导组织">' + '</h3>' +
+          '<h3>领导组织：' + '<span class="resume_key show">' + res.leadOrganize + '' + '</span>' + '<input id="leadOrganize" class="modify hide" placeholder="领导组织" value="' + res.leadOrganize + '">' + '</h3>' +
           '</div>' +
           '<div class="ResumesBasicTitle">' +
           '<div class="h4">' +
