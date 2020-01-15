@@ -1,3 +1,7 @@
+if (getCookie('username') == '干事') {
+  $('.modifyBtn').hide()
+}
+
 layui.use('layer', function () {
   var layer = layui.layer;
 
