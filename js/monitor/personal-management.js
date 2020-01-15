@@ -94,7 +94,7 @@ function refresh(name) {
               lis.push('</div>');
               lis.push('</div>');
               lis.push('<div class="layadmin-maillist-img layadmin-font-blod" style=" width: 100%;">');
-              lis.push('<div class="layui-btn-group btn" style="margin-top: 12px ">');
+              lis.push('<div class="layui-btn-group btn">');
               lis.push('<button class="layui-btn layui-btn-primary layui-btn-sm dismiss" value="' + item.id + '">辞退</button>');
               lis.push('<button class="layui-btn layui-btn-primary layui-btn-sm appoint1" value="' + item.id + '">任命为社长</button>');
               lis.push('<button class="layui-btn layui-btn-primary layui-btn-sm appoint2" value="' + item.id + '">任命为副社长</button>');
