@@ -1,4 +1,4 @@
-if (getCookie('username') == '干事') {
+if (getCookie('role') == '干事') {
   $('.modifyBtn').hide()
 }
 
@@ -50,7 +50,7 @@ layui.use('layer', function () {
           '<div class="adressH">' +
           '<p data-class="rest3">' +
           '<span class="adressP">部门信息：<span class="resume_key show">' + res.info + '</span>' +
-          '<textarea id="info" class="modify hide" placeholder="部门信息" value="' + res.info + '"></textarea>' +
+          '<textarea id="info" class="modify hide" placeholder="部门信息" value="' + res.info.replace(new RegExp("<br/>", "g"), '\n') + '">' + res.info.replace(new RegExp("<br/>", "g"), '\n') + '</textarea>' +
           '</p>' +
           '</div>' +
           '</div>' +
@@ -72,7 +72,7 @@ layui.use('layer', function () {
           '<ul>' +
           '<li>' +
           '<p class="resume_key show">' + res.duty + '</p>' +
-          '<textarea id="duty" class="modify hide" placeholder="部门职责" value="' + res.duty + '"></textarea>' +
+          '<textarea id="duty" class="modify hide" placeholder="部门职责" value="' + res.duty.replace(new RegExp("<br/>", "g"), '\n') + '">' + res.duty.replace(new RegExp("<br/>", "g"), '\n') + '</textarea>' +
           '</li>' +
           '</ul>' +
           '</article>' +
@@ -98,7 +98,7 @@ layui.use('layer', function () {
           '<ul>' +
           '<li>' +
           '<p class="resume_key show">' + res.generalRules + '</p>' +
-          '<textarea id="generalRules" class="modify hide" placeholder="总则" value="' + res.generalRules + '"></textarea>' +
+          '<textarea id="generalRules" class="modify hide" placeholder="总则" value="' + res.generalRules.replace(new RegExp("<br/>", "g"), '\n') + '">' + res.generalRules.replace(new RegExp("<br/>", "g"), '\n') + '</textarea>' +
           '</li>' +
           '</ul>' +
           '</article>' +
@@ -124,7 +124,7 @@ layui.use('layer', function () {
           '<ul>' +
           '<li>' +
           '<p class="resume_key show">' + res.purpose + '</p>' +
-          '<textarea id="purpose" class="modify hide" placeholder="宗旨" value="' + res.purpose + '"></textarea>' +
+          '<textarea id="purpose" class="modify hide" placeholder="宗旨" value="' + res.purpose.replace(new RegExp("<br/>", "g"), '\n') + '">' + res.purpose.replace(new RegExp("<br/>", "g"), '\n') + '</textarea>' +
           '</li>' +
           '</ul>' +
           '</article>' +
@@ -150,7 +150,7 @@ layui.use('layer', function () {
           '<ul>' +
           '<li>' +
           '<p class="resume_key show">' + res.droit + '</p>' +
-          '<textarea id="droit" class="modify hide" placeholder="权利" value="' + res.droit + '"></textarea>' +
+          '<textarea id="droit" class="modify hide" placeholder="权利" value="' + res.droit.replace(new RegExp("<br/>", "g"), '\n') + '">' + res.droit.replace(new RegExp("<br/>", "g"), '\n') + '</textarea>' +
           '</li>' +
           '</ul>' +
           '</article>' +
@@ -176,7 +176,7 @@ layui.use('layer', function () {
           '<ul>' +
           '<li>' +
           '<p class="resume_key show">' + res.obligation + '</p>' +
-          '<textarea id="obligation" class="modify hide" placeholder="义务" value="' + res.obligation + '"></textarea>' +
+          '<textarea id="obligation" class="modify hide" placeholder="义务" value="' + res.obligation.replace(new RegExp("<br/>", "g"), '\n') + '">' + res.obligation.replace(new RegExp("<br/>", "g"), '\n') + '</textarea>' +
           '</li>' +
           '</ul>' +
           '</article>' +
@@ -202,7 +202,7 @@ layui.use('layer', function () {
           '<ul>' +
           '<li>' +
           '<p class="resume_key show">' + res.requirement + '</p>' +
-          '<textarea id="requirement" class="modify hide" placeholder="要求" value="' + res.requirement + '"></textarea>' +
+          '<textarea id="requirement" class="modify hide" placeholder="要求" value="' + res.requirement.replace(new RegExp("<br/>", "g"), '\n') + '">' + res.requirement.replace(new RegExp("<br/>", "g"), '\n') + '</textarea>' +
           '</li>' +
           '</ul>' +
           '</article>' +
@@ -228,7 +228,7 @@ layui.use('layer', function () {
           '<ul>' +
           '<li>' +
           '<p class="resume_key show">' + res.other + '</p>' +
-          '<textarea id="other" class="modify hide" placeholder="其他" value="' + res.other + '"></textarea>' +
+          '<textarea id="other" class="modify hide" placeholder="其他" value="' + res.other.replace(new RegExp("<br/>", "g"), '\n') + '">' + res.other.replace(new RegExp("<br/>", "g"), '\n') + '</textarea>' +
           '</li>' +
           '</ul>' +
           '</article>' +
@@ -237,7 +237,7 @@ layui.use('layer', function () {
           '</div>' +
           '</div>' +
           '</div>' +
-          '</div>')
+          '</div>');
       },
       error: function (res) {
         layer.msg('错误请重试');
@@ -261,7 +261,7 @@ layui.use('layer', function () {
     $('.show').removeClass('hide');
 
     $.ajax({
-			url: url + '/department/updateDepartmentById',
+			url: url + '/department/updateMyDepartment',
 			type: 'post',
 			dataType: 'json',
 			async: true,
@@ -270,7 +270,6 @@ layui.use('layer', function () {
 				withCredentials: true
 			},
 			data: JSON.stringify({
-				'id': 1,
 				'characters': $('#characters').val(),
 				'num': $('#num').val(),
 				'masterName': $('#masterName').val(),

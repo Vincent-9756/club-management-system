@@ -65,7 +65,9 @@ function refresh(name) {
           url: url + "/user/queryEmployeesInfo",
           dataType: "json",
           data: JSON.stringify({
-            "username": name
+            "username": name,
+            "pageNum": page,
+            "pageSize": 6
           }),
           xhrFields: {
             withCredentials: true

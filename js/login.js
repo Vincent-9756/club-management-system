@@ -43,6 +43,7 @@ $('#loginBtn').click(function () {
         if (res.result == 'SUCCESS') {
           document.cookie = 'username=' + res.data.username;
           document.cookie = 'id=' + res.data.id;
+          document.cookie = 'role=' + res.data.role.name;
           window.location.href = "../html/home.html";
         } else {
           layer.msg('账号密码错误');
